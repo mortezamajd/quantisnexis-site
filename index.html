@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>QuantisNexis™ — Decision Intelligence for Resilient Institutions</title>
+<meta name="description" content="QuantisNexis is a modular decision-intelligence platform that transforms organizational, governance, resilience, and risk data into defensible Quantis Index scores, QuantisSentra risk signals, and prioritized actions for cities, agencies, universities, and health systems."/>
+<meta property="og:title" content="QuantisNexis™ — Decision Intelligence Platform"/>
+<meta property="og:description" content="Quantitative scoring engine. Risk signal detection. Executive-ready intelligence. Built for cities, agencies, universities, and health systems."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://quantisnexis.com"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#07111f;
+  --ink2:#1a2637;
+  --mid:#3d5166;
+  --muted:#6b829a;
+  --ghost:#a8bccf;
+  --line:#dce6ef;
+  --paper:#f8fafc;
+  --white:#ffffff;
+  --teal:#00957a;
+  --teal-l:#e6f7f4;
+  --teal-d:#006b58;
+  --amber:#c17a00;
+  --amber-l:#fef5e0;
+  --red:#c0392b;
+  --red-l:#fdf0ee;
+  --blue:#1a56c4;
+  --blue-l:#e8f0fd;
+  --r:6px;
+  --rmd:12px;
+  --rlg:20px;
+  --font-display:"DM Serif Display",Georgia,serif;
+  --font-body:"DM Sans",system-ui,sans-serif;
+  --font-mono:"DM Mono",ui-monospace,monospace;
+  --shadow-sm:0 1px 4px rgba(7,17,31,.07);
+  --shadow:0 4px 20px rgba(7,17,31,.10);
+  --shadow-lg:0 16px 48px rgba(7,17,31,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);color:var(--ink);background:var(--white);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── Layout ── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.wrap-sm{max-width:760px;margin:0 auto;padding:0 28px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.90);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-q{width:38px;height:38px;border-radius:var(--rmd);background:var(--ink);display:flex;align-items:center;justify-content:center}
+.brand-q svg{width:22px;height:22px}
+.brand-name{font-family:var(--font-mono);font-size:15px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.brand-name span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--mid)}
+.nav-links a{transition:color .15s}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--r);padding:10px 20px;font-family:var(--font-body);font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;border:none}
+.btn-primary{background:var(--ink);color:var(--white)}
+.btn-primary:hover{background:var(--ink2)}
+.btn-ghost{background:transparent;color:var(--mid);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-teal{background:var(--teal);color:var(--white)}
+.btn-teal:hover{background:var(--teal-d)}
+
+/* ── Hero ── */
+.hero{padding:80px 0 72px;border-bottom:1px solid var(--line)}
+.hero-eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--ghost)}
+.h1{font-family:var(--font-display);font-size:clamp(44px,6vw,76px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;max-width:720px}
+.h1 em{font-style:italic;color:var(--teal)}
+.hero-lead{font-size:18px;line-height:1.65;color:var(--mid);max-width:600px;margin-bottom:36px;font-weight:300}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:64px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--rmd);overflow:hidden}
+.stat{background:var(--white);padding:20px 24px}
+.stat-num{font-family:var(--font-mono);font-size:28px;font-weight:500;color:var(--ink);line-height:1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.01em}
+
+/* Score panel */
+.score-panel{background:var(--ink);border-radius:var(--rlg);padding:32px;color:var(--white);position:relative;overflow:hidden}
+.score-panel::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,149,122,.25) 0%,transparent 70%);pointer-events:none}
+.score-panel-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
+.score-big{font-family:var(--font-display);font-size:88px;line-height:.9;letter-spacing:-.04em;color:var(--white);margin:12px 0}
+.score-class{display:inline-flex;align-items:center;gap:8px;background:rgba(0,149,122,.2);border:1px solid rgba(0,149,122,.35);padding:6px 12px;border-radius:var(--r);font-family:var(--font-mono);font-size:13px;color:#5ff5d8;margin-bottom:20px}
+.score-bar-wrap{height:4px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin-bottom:24px}
+.score-bar{height:100%;background:linear-gradient(90deg,var(--teal) 0%,#5ff5d8 100%);border-radius:99px}
+.score-pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.pillar-cell{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:12px 10px;text-align:center}
+.pillar-val{font-family:var(--font-mono);font-size:18px;font-weight:500;color:var(--white)}
+.pillar-name{font-size:10px;color:rgba(255,255,255,.4);margin-top:4px;letter-spacing:.04em}
+.sentra-strip{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:14px 16px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sentra-tag{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase}
+.sentra-badge{font-family:var(--font-mono);font-size:12px;font-weight:500;padding:4px 10px;border-radius:var(--r);background:rgba(255,200,80,.15);color:#ffc850;border:1px solid rgba(255,200,80,.25)}
+
+/* ── Sections ── */
+.section{padding:72px 0;border-bottom:1px solid var(--line)}
+.section-dark{background:var(--ink);color:var(--white)}
+.section-dark .muted{color:rgba(255,255,255,.5)}
+.section-dark .line{border-color:rgba(255,255,255,.1)}
+.section-tinted{background:var(--paper)}
+.section-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.section-dark .section-label{color:rgba(255,255,255,.35)}
+.h2{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);letter-spacing:-.02em;line-height:1.06;margin-bottom:16px}
+.section-dark .h2{color:var(--white)}
+.lead{font-size:18px;line-height:1.65;color:var(--mid);max-width:640px;font-weight:300}
+.section-dark .lead{color:rgba(255,255,255,.55)}
+
+/* ── Cards ── */
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--rlg);padding:28px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,border-color .2s}
+.card:hover{box-shadow:var(--shadow);border-color:var(--ghost)}
+.card-icon{width:40px;height:40px;border-radius:var(--rmd);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:var(--font-mono);font-weight:500;font-size:15px}
+.card-icon.teal{background:var(--teal-l);color:var(--teal-d)}
+.card-icon.amber{background:var(--amber-l);color:var(--amber)}
+.card-icon.blue{background:var(--blue-l);color:var(--blue)}
+.card-icon.ink{background:var(--ink);color:var(--white)}
+.card h3{font-family:var(--font-body);font-size:17px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+.card p{font-size:14px;color:var(--mid);line-height:1.6}
+
+/* ── Architecture layers ── */
+.arch-grid{display:grid;gap:3px;margin-top:32px}
+.arch-row{display:grid;grid-template-columns:220px 1fr 80px;gap:20px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:14px 18px;transition:background .15s}
+.arch-row:hover{background:rgba(255,255,255,.07)}
+.arch-row.core{border-color:rgba(0,149,122,.35);background:rgba(0,149,122,.08)}
+.arch-name{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--white)}
+.arch-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.45}
+.arch-pct{font-family:var(--font-mono);font-size:13px;font-weight:500;text-align:right}
+.arch-pct.done{color:#5ff5d8}
+.arch-pct.mid{color:#ffc850}
+.arch-pct.low{color:rgba(255,255,255,.3)}
+
+/* ── Modules ── */
+.module-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:32px}
+.module-card{border:1px solid var(--line);border-radius:var(--rmd);padding:22px 16px;text-align:center;transition:all .15s;cursor:default}
+.module-card:hover{border-color:var(--teal);background:var(--teal-l)}
+.module-card:hover .mod-name{color:var(--teal-d)}
+.module-icon{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.mod-name{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.mod-tag{font-size:11px;color:var(--muted);margin-top:6px}
+
+/* ── Outputs ── */
+.output-list{display:grid;gap:12px;margin-top:28px}
+.output-row{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--white)}
+.output-row:hover{border-color:var(--ghost);box-shadow:var(--shadow-sm)}
+.output-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:6px}
+.output-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.output-desc{font-size:13px;color:var(--muted)}
+
+/* ── Sentra section ── */
+.sentra-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:40px}
+.sentra-card{border-radius:var(--rmd);padding:24px;border:1px solid rgba(255,255,255,.1)}
+.sentra-card.green{background:rgba(0,149,122,.08);border-color:rgba(0,149,122,.2)}
+.sentra-card.amber{background:rgba(193,122,0,.08);border-color:rgba(193,122,0,.2)}
+.sentra-card.red{background:rgba(192,57,43,.08);border-color:rgba(192,57,43,.2)}
+.sentra-card.critical{background:rgba(192,57,43,.14);border-color:rgba(192,57,43,.35)}
+.sentra-level{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sentra-card.green .sentra-level{color:#5ff5d8}
+.sentra-card.amber .sentra-level{color:#ffc850}
+.sentra-card.red .sentra-level,.sentra-card.critical .sentra-level{color:#ff8070}
+.sentra-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.55}
+.sentra-threshold{font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--white);margin-bottom:6px}
+
+/* ── Who ── */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.who-item{padding:24px;border:1px solid var(--line);border-radius:var(--rmd)}
+.who-item h4{font-size:16px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.who-item p{font-size:13px;color:var(--mid);line-height:1.55}
+
+/* ── API strip ── */
+.api-strip{background:var(--ink2);border-radius:var(--rlg);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:40px}
+.api-strip-text h3{font-family:var(--font-display);font-size:26px;color:var(--white);margin-bottom:6px}
+.api-strip-text p{font-size:14px;color:rgba(255,255,255,.45);max-width:480px}
+.api-endpoints{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.api-ep{font-family:var(--font-mono);font-size:12px;padding:6px 12px;border-radius:var(--r);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);white-space:nowrap}
+.api-ep span{color:rgba(0,149,122,.8);margin-right:8px;font-weight:500}
+
+/* ── CTA ── */
+.cta-section{padding:80px 0;text-align:center}
+.cta-kicker{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.cta-h{font-family:var(--font-display);font-size:clamp(36px,4vw,54px);letter-spacing:-.02em;line-height:1.06;margin-bottom:16px}
+.cta-sub{font-size:17px;color:var(--mid);max-width:520px;margin:0 auto 36px;font-weight:300;line-height:1.6}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ── Footer ── */
+.footer{border-top:1px solid var(--line);padding:40px 0}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;margin-bottom:36px}
+.footer-brand-name{font-family:var(--font-mono);font-size:14px;font-weight:500;margin-bottom:8px}
+.footer-brand-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:220px}
+.footer-col h5{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.footer-col a{display:block;font-size:14px;color:var(--mid);margin-bottom:9px;transition:color .15s}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.footer-marks{max-width:580px;line-height:1.5}
+
+/* ── Animations ── */
+@keyframes fade-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fade-up .5s ease both}
+.delay-1{animation-delay:.1s}
+.delay-2{animation-delay:.2s}
+.delay-3{animation-delay:.3s}
+.delay-4{animation-delay:.4s}
+
+/* ── Utility ── */
+.mono{font-family:var(--font-mono)}
+.tag{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.04em}
+.tag-teal{background:var(--teal-l);color:var(--teal-d)}
+.tag-amber{background:var(--amber-l);color:var(--amber)}
+.divider{height:1px;background:var(--line);margin:40px 0}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .grid-2{grid-template-columns:1fr}
+  .hero{padding:56px 0 48px}
+  .score-panel{display:none}
+}
+@media(max-width:768px){
+  .grid-3,.who-grid{grid-template-columns:1fr}
+  .module-grid{grid-template-columns:repeat(2,1fr)}
+  .arch-row{grid-template-columns:1fr}
+  .arch-pct{text-align:left}
+  .api-strip{flex-direction:column;align-items:flex-start}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start}
+  .nav-links{display:none}
+  .sentra-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <div class="brand-q">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="7" stroke="white" stroke-width="1.6"/>
+          <path d="M15 15L19 19" stroke="#00957a" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 7v3l2 2" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="brand-name">QuantisNexis™ <span>/ QNX™</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#modules">Modules</a>
+      <a href="#outputs">Outputs</a>
+      <a href="#sentra">Sentra</a>
+      <a href="#demo">Demo</a>
+    </nav>
+    <a class="btn btn-primary" href="mailto:info@quantisnexis.com">Request pilot</a>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="grid-2">
+      <div>
+        <div class="hero-eyebrow animate">Onyx Moorland Environmental Engineering</div>
+        <h1 class="h1 animate delay-1">Decision intelligence<br>for <em>resilient</em><br>institutions.</h1>
+        <p class="hero-lead animate delay-2">QuantisNexis™ transforms organizational, governance, environmental, and performance data into defensible Quantis Index™ scores, QuantisSentra™ risk signals, and prioritized actions — built on peer-reviewed quantitative methods.</p>
+        <div class="hero-actions animate delay-3">
+          <a class="btn btn-teal" href="mailto:info@quantisnexis.com">Request a pilot conversation</a>
+          <a class="btn btn-ghost" href="#architecture">View system architecture</a>
+        </div>
+        <div class="hero-stats animate delay-4">
+          <div class="stat">
+            <div class="stat-num mono">25</div>
+            <div class="stat-label">normalized variables</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num mono">5</div>
+            <div class="stat-label">intelligence pillars</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num mono">100</div>
+            <div class="stat-label">question bank</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num mono">5+</div>
+            <div class="stat-label">sector modules</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live score card -->
+      <div class="score-panel animate delay-2">
+        <div class="score-panel-label">Quantis Index™ — live output preview</div>
+        <div class="score-big">71.4</div>
+        <div class="score-class">
+          <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#5ff5d8"/></svg>
+          Moderate-High
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:16px;font-family:var(--font-mono)">95% CI: 66.2 – 76.6 &nbsp;·&nbsp; sector: university</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:71.4%"></div></div>
+        <div class="score-pillars">
+          <div class="pillar-cell"><div class="pillar-val">73.1</div><div class="pillar-name">EI</div></div>
+          <div class="pillar-cell"><div class="pillar-val">61.0</div><div class="pillar-name">RE</div></div>
+          <div class="pillar-cell"><div class="pillar-val">72.8</div><div class="pillar-name">AD</div></div>
+          <div class="pillar-cell"><div class="pillar-val">72.2</div><div class="pillar-name">IN</div></div>
+          <div class="pillar-cell"><div class="pillar-val">75.2</div><div class="pillar-name">ET</div></div>
+        </div>
+        <div class="sentra-strip">
+          <div>
+            <div class="sentra-tag">QuantisSentra™</div>
+            <div style="font-size:14px;color:var(--white);margin-top:4px;">AMBER — Elevated risk</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:2px;font-family:var(--font-mono)">Primary driver: Renewal Failure</div>
+          </div>
+          <div class="sentra-badge">AMBER</div>
+        </div>
+        <div style="margin-top:16px;font-size:12px;color:rgba(255,255,255,.2);font-family:var(--font-mono);">Monte Carlo n=500 · WOWA/Orness · BMS·ATCG·VUCA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Platform ── -->
+<section class="section" id="platform">
+  <div class="wrap">
+    <div class="section-label">Platform</div>
+    <div class="grid-2" style="gap:56px">
+      <div>
+        <h2 class="h2">Four intelligence layers — one defensible score.</h2>
+        <p class="lead" style="margin-bottom:32px">QuantisNexis separates computation from interpretation. The Core produces defensible scores. Sentra detects risk. Advisors prioritize action. Narrator explains results for executives. No layer invents — each layer refines.</p>
+        <a class="btn btn-ghost" href="#architecture">View full architecture →</a>
+      </div>
+      <div class="grid-2" style="gap:16px;grid-template-columns:1fr 1fr">
+        <div class="card">
+          <div class="card-icon ink" style="font-size:13px">QNC</div>
+          <h3>QuantisNexis Core™</h3>
+          <p>25-variable quantitative engine. BMS ontological layer, ATCG genomic coherence, VUCA turbulence field, WOWA/Orness sector weighting, Monte Carlo uncertainty bands.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon teal">QS</div>
+          <h3>QuantisSentra™</h3>
+          <p>Decay risk signal engine. Bureaucratic drag, stagnation, change friction, disruption pressure, renewal failure — per-sector alert thresholds, trend detection.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon amber">QA</div>
+          <h3>Quantis Advisors™</h3>
+          <p>Six deterministic agents. Sector-specific intervention library with 100 combinations across pillar, sector, and severity. Ranked action priorities for leadership.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon blue">QN</div>
+          <h3>Quantis Narrator™</h3>
+          <p>Score-safe LLM explanation layer. Three prompt templates — executive summary, pillar narrative, advisor rationale. Explains scores; never invents or adjusts them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Architecture ── -->
+<section class="section section-dark" id="architecture">
+  <div class="wrap">
+    <div class="section-label">System architecture</div>
+    <h2 class="h2">QuantisNexis™ System Architecture</h2>
+    <p class="lead">Eleven layers from client input to executive-ready output. Built for data ingestion, defensible modelling, risk detection, recommendations, and client-facing delivery.</p>
+    <div class="arch-grid">
+      <div class="arch-row">
+        <div class="arch-name">01 · Client Input</div>
+        <div class="arch-desc">Surveys, CSV/Excel upload, structured data, external KPI systems — survey-to-variable bridge included</div>
+        <div class="arch-pct mid">75%</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">02 · QNX API Gateway</div>
+        <div class="arch-desc">FastAPI REST service — POST /v1/assess, survey endpoint, questionnaire generation, X-API-Key auth</div>
+        <div class="arch-pct done">Live</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">03 · Validation Layer</div>
+        <div class="arch-desc">Type checks, range enforcement, coverage gates, missing-data rules — all three input paths covered</div>
+        <div class="arch-pct done">Live</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">04 · NLP Extraction</div>
+        <div class="arch-desc">Document upload placeholder — text extraction, indicator mapping, future LLM-assisted extraction</div>
+        <div class="arch-pct low">Queued</div>
+      </div>
+      <div class="arch-row core">
+        <div class="arch-name" style="color:#5ff5d8">05 · QuantisNexis Core™</div>
+        <div class="arch-desc" style="color:rgba(255,255,255,.65)">25-variable engine · BMS · ATCG · VUCA · WOWA/Orness · sector coefficients · master equation</div>
+        <div class="arch-pct done">90%</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">06 · Uncertainty Layer</div>
+        <div class="arch-desc">Monte Carlo (n=5000), MCMC Bayesian learning, 95% credible intervals, classification probability bands</div>
+        <div class="arch-pct mid">55%</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">07 · Machine Learning</div>
+        <div class="arch-desc">Weight calibration, benchmarking, anomaly detection — correctly deferred to post-data-collection</div>
+        <div class="arch-pct low">Deferred</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">08 · QuantisSentra™</div>
+        <div class="arch-desc">Decay risk · per-sector thresholds · STABLE/RISING/FALLING/ACCELERATING trend detection · alert badges</div>
+        <div class="arch-pct done">Live</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">09 · Quantis Advisors™</div>
+        <div class="arch-desc">Six agents · sector × pillar × severity intervention library · 100 specific action combinations</div>
+        <div class="arch-pct done">Live</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">10 · Quantis Narrator™</div>
+        <div class="arch-desc">Score-safe LLM templates · executive summary · pillar narrative · advisor rationale · mock mode ready</div>
+        <div class="arch-pct done">Live</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-name">11 · Output &amp; Delivery</div>
+        <div class="arch-desc">Streamlit dashboard · JSON/CSV exports · Narrator report downloads · API JSON responses</div>
+        <div class="arch-pct done">85%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Modules ── -->
+<section class="section section-tinted" id="modules">
+  <div class="wrap">
+    <div class="section-label">Intelligence modules</div>
+    <h2 class="h2">One engine. Five sector contexts.</h2>
+    <p class="lead">Each module applies sector-calibrated WOWA weights, Orness parameters, QuantisSentra thresholds, and intervention libraries — same defensible engine, context-appropriate configuration.</p>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">QNX</div>
+        <div class="mod-name">Climate™</div>
+        <div class="mod-tag">Water, infrastructure, environmental agencies</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">QNX</div>
+        <div class="mod-name">Government™</div>
+        <div class="mod-tag">Cities, counties, public agencies</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">QNX</div>
+        <div class="mod-name">University™</div>
+        <div class="mod-tag">Higher education, research consortia</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">QNX</div>
+        <div class="mod-name">Health™</div>
+        <div class="mod-tag">Health systems, integrated delivery networks</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">QNX</div>
+        <div class="mod-name">Enterprise™</div>
+        <div class="mod-tag">Corporations, non-profits, strategic consultancies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Outputs ── -->
+<section class="section" id="outputs">
+  <div class="wrap">
+    <div class="grid-2" style="gap:64px">
+      <div>
+        <div class="section-label">What QuantisNexis produces</div>
+        <h2 class="h2">Executive-ready intelligence. Audit-ready evidence.</h2>
+        <p class="lead">Every output is traceable to the 25-variable input set. No black box. No unexplained scores. The engine produces structured JSON, the dashboard renders it, and the API delivers it to any integration.</p>
+      </div>
+      <div class="output-list">
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">Quantis Index™ score (0–100)</div>
+            <div class="output-desc">Overall organisational intelligence score with 95% credible interval and Monte Carlo distribution</div>
+          </div>
+        </div>
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">Five-pillar profile</div>
+            <div class="output-desc">Excellence Core, Resilience, Adaptability, Intelligence, Ethics/Legitimacy — scored and ranked</div>
+          </div>
+        </div>
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">QuantisSentra™ risk signal</div>
+            <div class="output-desc">GREEN / AMBER / RED / CRITICAL alert with primary decay driver, trend direction, and sector-specific actions</div>
+          </div>
+        </div>
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">Ranked recommendations</div>
+            <div class="output-desc">Six Quantis Advisors™ prioritised by score state, with sector-tagged intervention actions</div>
+          </div>
+        </div>
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">Quantis Narrator™ report</div>
+            <div class="output-desc">Score-safe AI-generated executive summary, pillar narratives, and advisor rationale for board briefings</div>
+          </div>
+        </div>
+        <div class="output-row">
+          <div class="output-dot"></div>
+          <div>
+            <div class="output-name">JSON / CSV export</div>
+            <div class="output-desc">Machine-readable full result, executive summary, and Sentra signal — ready for integration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QuantisSentra ── -->
+<section class="section section-dark" id="sentra">
+  <div class="wrap">
+    <div class="section-label">QuantisSentra™</div>
+    <h2 class="h2">Early warning. Before the score deteriorates.</h2>
+    <p class="lead">QuantisSentra detects institutional decay before it appears in the Quantis Index. Five decay dimensions — bureaucratic drag, stagnation, change friction, disruption pressure, and renewal failure — are monitored with per-sector thresholds.</p>
+    <div class="sentra-grid">
+      <div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.65">
+          Alert levels are calibrated per sector. A health system triggers AMBER at DR=0.20 — a level that only triggers AMBER in an enterprise at DR=0.25. Mission-critical institutions need tighter thresholds.
+        </div>
+        <div style="display:grid;gap:8px">
+          <div class="sentra-card green">
+            <div class="sentra-level">GREEN — Stable</div>
+            <div class="sentra-threshold">DR &lt; 0.20–0.25</div>
+            <div class="sentra-desc">No urgent intervention required. Sustain monitoring cadence.</div>
+          </div>
+          <div class="sentra-card amber">
+            <div class="sentra-level">AMBER — Elevated risk</div>
+            <div class="sentra-threshold">DR 0.20–0.42</div>
+            <div class="sentra-desc">Proactive management response recommended within 30 days.</div>
+          </div>
+          <div class="sentra-card red">
+            <div class="sentra-level">RED — High risk</div>
+            <div class="sentra-threshold">DR 0.35–0.60</div>
+            <div class="sentra-desc">Senior leadership action required within 14 days.</div>
+          </div>
+          <div class="sentra-card critical">
+            <div class="sentra-level">CRITICAL — Immediate action</div>
+            <div class="sentra-threshold">DR ≥ 0.50–0.60</div>
+            <div class="sentra-desc">Executive intervention required. Board escalation warranted.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;color:rgba(255,255,255,.35);font-family:var(--font-mono);margin-bottom:20px;letter-spacing:.05em;text-transform:uppercase">Decay component breakdown</div>
+        <div style="display:grid;gap:10px">
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:rgba(255,255,255,.03)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--white)">Bureaucratic Drag (BD)</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4)">1 − Process</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35)">Process rigidity and administrative friction reducing organisational responsiveness</div>
+          </div>
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:rgba(255,255,255,.03)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--white)">Stagnation (SG)</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4)">1 − Innovation</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35)">Absence of innovation and renewal leading to strategic atrophy</div>
+          </div>
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:rgba(255,255,255,.03)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--white)">Change Friction (CF)</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4)">1 − Agility</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35)">Low organisational agility creating resistance to necessary transformation</div>
+          </div>
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:rgba(255,255,255,.03)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--white)">Disruption Pressure (DP)</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4)">(V + U) / 2</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35)">External vulnerability and uncertainty exposure amplifying operational risk</div>
+          </div>
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);background:rgba(255,255,255,.03)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <div style="font-family:var(--font-mono);font-size:13px;color:var(--white)">Renewal Failure (RF)</div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4)">1 − AI Readiness</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.35)">Insufficient digital and AI capability leading to compounding capability obsolescence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who ── -->
+<section class="section section-tinted" id="who">
+  <div class="wrap">
+    <div class="section-label">Who QuantisNexis serves</div>
+    <h2 class="h2">Built for institutions that require defensible evidence.</h2>
+    <p class="lead">QuantisNexis is not a general performance framework. It is a precision instrument for organisations that need quantitative rigour, sector-appropriate calibration, and outputs that survive scrutiny.</p>
+    <div class="who-grid">
+      <div class="who-item">
+        <h4>Cities &amp; public agencies</h4>
+        <p>Climate resilience planning, governance transparency, and service-delivery diagnostics for elected officials, city managers, and federal grant applications.</p>
+      </div>
+      <div class="who-item">
+        <h4>Universities &amp; research consortia</h4>
+        <p>Accreditation readiness, strategic alignment, research portfolio health, and institutional sustainability assessments.</p>
+      </div>
+      <div class="who-item">
+        <h4>Health systems</h4>
+        <p>Operational resilience, clinical governance, workforce vitality, and regulatory compliance diagnostics with mission-critical Sentra thresholds.</p>
+      </div>
+      <div class="who-item">
+        <h4>Environmental agencies</h4>
+        <p>Infrastructure decay detection, climate adaptation readiness, and multi-hazard resilience scoring for water, energy, and transportation systems.</p>
+      </div>
+      <div class="who-item">
+        <h4>Enterprise &amp; non-profits</h4>
+        <p>Organisational excellence benchmarking, strategic fitness diagnostics, and ESG governance scoring for boards and leadership teams.</p>
+      </div>
+      <div class="who-item">
+        <h4>Strategic consultancies</h4>
+        <p>White-label-ready scoring infrastructure for organisational transformation practices, with API access and branded report output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── API ── -->
+<section class="section" id="demo">
+  <div class="wrap">
+    <div class="section-label">API &amp; Integration</div>
+    <h2 class="h2">REST API. One endpoint. Full engine output.</h2>
+    <p class="lead">The QuantisNexis API gateway delivers the full engine stack over HTTP. Submit 25 normalised variables, receive the Quantis Index, pillar scores, QuantisSentra signal, and Quantis Advisors output as structured JSON.</p>
+    <div class="api-strip">
+      <div class="api-strip-text">
+        <h3>QNX API v1</h3>
+        <p>FastAPI gateway with X-API-Key authentication, OpenAPI 3.1 spec, survey-driven endpoint, and questionnaire generation. Contact us for a pilot API key.</p>
+        <a class="btn btn-teal" style="margin-top:20px;width:fit-content" href="mailto:info@quantisnexis.com">Request API access</a>
+      </div>
+      <div class="api-endpoints">
+        <div class="api-ep"><span>GET</span>/v1/health</div>
+        <div class="api-ep"><span>POST</span>/v1/assess</div>
+        <div class="api-ep"><span>POST</span>/v1/assess/survey</div>
+        <div class="api-ep"><span>POST</span>/v1/assess/questionnaire</div>
+        <div class="api-ep"><span>GET</span>/v1/sectors</div>
+        <div class="api-ep"><span>GET</span>/v1/variables</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-kicker">Ready when you are</div>
+    <h2 class="cta-h">Request a private pilot conversation.</h2>
+    <p class="cta-sub">We are running private assessments with select cities, agencies, universities, and health systems. The platform is live and ready for your first dataset.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" style="padding:13px 28px;font-size:15px" href="mailto:info@quantisnexis.com">Request a pilot conversation</a>
+      <a class="btn btn-ghost" style="padding:13px 28px;font-size:15px" href="mailto:info@quantisnexis.com">Ask for a technical brief</a>
+    </div>
+    <div style="margin-top:32px;font-family:var(--font-mono);font-size:12px;color:var(--ghost)">info@quantisnexis.com &nbsp;·&nbsp; quantisnexis.com &nbsp;·&nbsp; Onyx Moorland Environmental Engineering</div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name mono">QuantisNexis™ / QNX™</div>
+        <div class="footer-brand-desc">Modular decision-intelligence platform by Onyx Moorland Environmental Engineering. Rancho Santa Margarita, California.</div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="#platform">Intelligence layers</a>
+        <a href="#architecture">System architecture</a>
+        <a href="#modules">QNX modules</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#sentra">QuantisSentra™</a>
+        <a href="#demo">API gateway</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:info@quantisnexis.com">info@quantisnexis.com</a>
+        <a href="mailto:info@quantisnexis.com">Request a pilot</a>
+        <a href="mailto:info@quantisnexis.com">Technical brief</a>
+        <a href="mailto:info@quantisnexis.com">API access</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-marks">© 2026 Onyx Moorland Environmental Engineering. QuantisNexis™, QNX™, QuantisSentra™, Quantis Advisors™, Quantis Narrator™, and Quantis Index™ are platform marks of Onyx Moorland Environmental Engineering.</div>
+      <div class="mono" style="font-size:11px;white-space:nowrap">QNX API v1.0 · May 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Staggered fade-in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.animationDelay = (i * 0.08) + 's';
+      e.target.classList.add('animate');
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12});
+
+document.querySelectorAll('.card, .arch-row, .module-card, .output-row, .who-item, .sentra-card, .stat').forEach(el => {
+  el.style.opacity = '0';
+  obs.observe(el);
+});
+
+// Active nav link highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const onScroll = () => {
+  const y = window.scrollY + 100;
+  sections.forEach(s => {
+    if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
+      navLinks.forEach(a => a.style.color = '');
+      const active = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+      if (active) active.style.color = 'var(--ink)';
+    }
+  });
+};
+window.addEventListener('scroll', onScroll, {passive: true});
+</script>
+</body>
+</html>
