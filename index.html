@@ -272,6 +272,99 @@
       .demo-pillars,.demo-alerts,.mini-scenarios{grid-template-columns:1fr 1fr}
     }
 
+  
+    /* QNX light UX refinements based on homepage hierarchy feedback */
+    .proof-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin:24px 0 36px;
+    }
+    .proof-card{
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:16px;
+      backdrop-filter:blur(12px);
+    }
+    .proof-card strong{
+      display:block;
+      font-family:var(--font-display);
+      font-size:28px;
+      letter-spacing:-.04em;
+      color:white;
+    }
+    .proof-card span{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+    .stack-simple{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+    .stack-card{
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:20px;
+      padding:18px;
+      min-height:150px;
+    }
+    .stack-card .step{
+      display:inline-flex;
+      width:28px;height:28px;
+      border-radius:10px;
+      align-items:center;justify-content:center;
+      background:rgba(59,130,246,.14);
+      color:#93c5fd;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+    .stack-card strong{display:block;margin-bottom:7px}
+    .stack-card span{display:block;color:var(--muted);font-size:13px}
+    .sector-paths{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .sector-path{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.045);
+      border-radius:18px;
+      padding:16px;
+      transition:.2s all;
+    }
+    .sector-path:hover{
+      transform:translateY(-2px);
+      border-color:rgba(96,165,250,.35);
+      background:rgba(255,255,255,.065);
+    }
+    .sector-path strong{display:block;margin-bottom:4px}
+    .sector-path span{font-size:12px;color:var(--muted)}
+    .details-panel{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      background:rgba(255,255,255,.035);
+      padding:18px 20px;
+      margin-top:22px;
+    }
+    .details-panel summary{
+      cursor:pointer;
+      font-weight:800;
+      color:#dcecff;
+    }
+    .details-panel p{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    @media(max-width:980px){
+      .proof-strip,.stack-simple,.sector-paths{grid-template-columns:1fr}
+    }
+
   </style>
 </head>
 
@@ -285,6 +378,7 @@
     <nav class="nav-links">
       <a href="#platform">Platform</a>
       <a href="#architecture">Architecture</a>
+      <a href="#sectors">Sectors</a>
       <a href="#modules">Modules</a>
       <a href="#demo">Demo</a>
       <a href="#outputs">Outputs</a>
@@ -299,12 +393,19 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow"><span class="dot"></span> QNX v4.2 pilot-ready engine</div>
-        <h1>Decision intelligence for <span class="grad">resilient institutions.</span></h1>
-        <p>QuantisNexis™ converts organizational, governance, resilience, and performance data into a defensible Quantis Index™, QuantisSentra™ risk signals, and prioritized action pathways for agencies, universities, health systems, enterprises, and climate-facing institutions.</p>
+        <h1>Pilot-ready intelligence for <span class="grad">resilient decisions.</span></h1>
+        <p>QuantisNexis™ helps leaders see where institutional resilience is strong, where it is fragile, and what to do next—using the QNX v4.2 engine, Quantis Index™, QuantisSentra™ risk signals, and Quantis Advisors™ action logic.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="mailto:info@quantisnexis.com">Request a pilot conversation</a>
-          <a class="btn btn-soft" href="#architecture">View architecture</a>
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Demo%20Request">Book a demo</a>
+          <a class="btn btn-soft" href="#demo">View NYC case study</a>
         </div>
+
+        <div class="proof-strip">
+          <div class="proof-card"><strong>0.542</strong><span>NYC demo Quantis Index</span></div>
+          <div class="proof-card"><strong>AMBER</strong><span>QuantisSentra risk signal</span></div>
+          <div class="proof-card"><strong>RE</strong><span>Top synergy bottleneck</span></div>
+        </div>
+
         <div class="hero-stats">
           <div class="stat"><div class="stat-num">25</div><div class="stat-label">core variables</div></div>
           <div class="stat"><div class="stat-num">5</div><div class="stat-label">intelligence pillars</div></div>
@@ -340,6 +441,12 @@
         <div class="kicker">Platform</div>
         <h2>A unified engine, not a black-box AI tool.</h2>
         <p class="lead">QNX Core™ provides the mathematical foundation, while advanced layers—RADAR, synergy, copula dependency, EFQM/Baldrige benchmarking, ML readiness, QuantisSentra, Quantis Advisors, and Quantis Narrator—add transparent diagnostic intelligence around the core result.</p>
+
+        <details class="details-panel">
+          <summary>View technical foundation retained for methodology users</summary>
+          <p>QNX Core™ is represented as a 25-variable engine integrating BMS, ATCG, VUCA, WOWA/Orness weighting, and the master equation. The platform also includes RADAR scoring, EFQM/Baldrige anchoring, Diamond-style ESI synergy, copula dependency diagnostics, ML readiness, outcome-label workflow, and Tito-Conti advisor logic.</p>
+        </details>
+
       </div>
 
       <div class="grid-4">
@@ -359,6 +466,14 @@
         <p class="lead">The public website now reflects the current production direction: QNX v4.2 is pilot-ready, non-destructive, and designed to support dashboard, API, report, and future supervised ML workflows.</p>
       </div>
 
+
+      <div class="stack-simple">
+        <div class="stack-card"><div class="step">1</div><strong>QNX Core™</strong><span>25-variable engine using BMS, ATCG, VUCA, WOWA/Orness, and the master equation to generate the Quantis Index™.</span></div>
+        <div class="stack-card"><div class="step">2</div><strong>Risk Logic</strong><span>QuantisSentra™ highlights decay, anomaly, threshold, synergy, and tail-risk signals.</span></div>
+        <div class="stack-card"><div class="step">3</div><strong>Decision Intelligence</strong><span>Quantis Advisors™ converts diagnostics into sector-specific priorities and actions.</span></div>
+        <div class="stack-card"><div class="step">4</div><strong>Executive Narration</strong><span>Quantis Narrator™ turns engine outputs into score-safe executive summaries and reports.</span></div>
+      </div>
+
       <div class="architecture">
         <div class="arch-row"><div class="arch-name">01 · Client input</div><div class="arch-desc">Likert, EFQM A/B/C/D, Diamond multi-rater, RADAR inputs, cohort/history records, documents, KPIs.</div><div class="arch-status pilot">Pilot</div></div>
         <div class="arch-row"><div class="arch-name">02 · Validation</div><div class="arch-desc">Base-result validation, numeric checks, fallback warning, and output contract checks.</div><div class="arch-status live">Live</div></div>
@@ -374,6 +489,25 @@
       </div>
     </div>
   </section>
+
+  
+  <section id="sectors">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Sector paths</div>
+        <h2>Start from your operating context.</h2>
+        <p class="lead">QNX can present the same core engine through sector-specific language, ideal profiles, benchmarks, and advisory logic.</p>
+      </div>
+      <div class="sector-paths">
+        <a class="sector-path" href="#modules"><strong>Climate</strong><span>Flood, drought, infrastructure, adaptation, public risk.</span></a>
+        <a class="sector-path" href="#modules"><strong>Government</strong><span>Agencies, cities, counties, governance readiness.</span></a>
+        <a class="sector-path" href="#modules"><strong>University</strong><span>Institutional quality, research, resilience, operations.</span></a>
+        <a class="sector-path" href="#modules"><strong>Health</strong><span>Reliability, trust, safety, continuity, compliance.</span></a>
+        <a class="sector-path" href="#modules"><strong>Enterprise</strong><span>Performance, resilience, governance, transformation.</span></a>
+      </div>
+    </div>
+  </section>
+
 
   <section id="modules">
     <div class="wrap">
