@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>QuantisNexis™ | QNX v4.2 Pilot-Ready Decision Intelligence Engine</title>
+  <meta name="description" content="QuantisNexis/QNX is a pilot-ready decision-intelligence platform that transforms organizational, governance, resilience, and performance data into defensible Quantis Index scores, QuantisSentra risk signals, and prioritized actions."/>
+  <meta property="og:title" content="QuantisNexis™ | QNX Decision Intelligence Platform"/>
+  <meta property="og:description" content="Pilot-ready QNX v4.2 engine for organizational intelligence, resilience diagnostics, risk/decay signals, executive decision support, and NYC urban flood governance demo."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://quantisnexis.com"/>
+  <meta name="theme-color" content="#07111f"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1730;
+      --surface:#101d36;
+      --surface2:#152544;
+      --surface3:#1b2d52;
+      --card:rgba(16,29,54,.78);
+      --glass:rgba(255,255,255,.045);
+      --text:#f4f7fb;
+      --muted:#9db0c7;
+      --muted2:#6f859f;
+      --line:rgba(255,255,255,.08);
+      --line2:rgba(255,255,255,.14);
+      --blue:#3b82f6;
+      --blue2:#60a5fa;
+      --teal:#14b8a6;
+      --cyan:#22d3ee;
+      --purple:#8b5cf6;
+      --amber:#f59e0b;
+      --red:#ef4444;
+      --green:#22c55e;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
+      --glow:0 0 44px rgba(59,130,246,.18);
+      --r:18px;
+      --r2:28px;
+      --font-display:"Space Grotesk",system-ui,sans-serif;
+      --font-body:"Inter",system-ui,sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--font-body);
+      color:var(--text);
+      background:
+        radial-gradient(circle at 83% 0%, rgba(59,130,246,.22), transparent 32%),
+        radial-gradient(circle at 4% 17%, rgba(20,184,166,.18), transparent 26%),
+        radial-gradient(circle at 55% 65%, rgba(139,92,246,.10), transparent 30%),
+        linear-gradient(180deg,#07111f 0%,#0b1730 38%,#07111f 100%);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+    .nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(7,17,31,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:43px;height:43px;border-radius:15px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#0f2550,#2563eb,#14b8a6);
+      box-shadow:0 10px 35px rgba(20,184,166,.22);
+      font-family:var(--font-display);
+      font-weight:800;
+      letter-spacing:-.04em;
+    }
+    .brand-name{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.03em}
+    .brand-sub{font-size:11px;color:var(--muted);margin-top:-2px}
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;color:#c3d3e8}
+    .nav-links a{transition:.2s color}.nav-links a:hover{color:white}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      border-radius:999px;padding:11px 18px;font-weight:650;font-size:14px;
+      border:1px solid var(--line2);transition:.2s all;cursor:pointer;
+    }
+    .btn-primary{background:linear-gradient(135deg,#2563eb,#14b8a6);border:none;box-shadow:var(--glow);color:white}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-soft{background:rgba(255,255,255,.06);color:white}.btn-soft:hover{background:rgba(255,255,255,.10)}
+
+    .hero{padding:96px 0 72px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:58px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      border:1px solid rgba(96,165,250,.22);
+      background:rgba(96,165,250,.08);
+      color:#bcd8ff;
+      border-radius:999px;padding:8px 12px;
+      font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      margin-bottom:24px;
+    }
+    .dot{width:7px;height:7px;border-radius:99px;background:var(--teal);box-shadow:0 0 18px var(--teal)}
+    h1{
+      font-family:var(--font-display);
+      font-size:clamp(46px,7vw,82px);
+      line-height:.98;
+      letter-spacing:-.065em;
+      max-width:820px;
+      margin-bottom:24px;
+    }
+    .grad{background:linear-gradient(135deg,#60a5fa,#22d3ee,#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:18px;color:#b8c8dd;max-width:665px;font-weight:400;margin-bottom:34px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .stat{
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      border-radius:17px;padding:16px;
+      backdrop-filter:blur(12px);
+    }
+    .stat-num{font-family:var(--font-display);font-size:28px;font-weight:800}
+    .stat-label{font-size:12px;color:var(--muted)}
+
+    .score-panel{
+      background:
+        radial-gradient(circle at 100% 0%, rgba(20,184,166,.22), transparent 30%),
+        radial-gradient(circle at 0% 100%, rgba(59,130,246,.18), transparent 34%),
+        rgba(16,29,54,.74);
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:30px;padding:30px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+    .panel-label{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .score-big{font-family:var(--font-display);font-size:88px;line-height:.9;font-weight:800;letter-spacing:-.07em;margin:18px 0 8px}
+    .score-sub{color:#b8c8dd;font-size:14px;margin-bottom:18px}
+    .class-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(20,184,166,.28);background:rgba(20,184,166,.10);color:#7df7df;border-radius:999px;padding:7px 11px;font-size:13px;font-weight:700;margin-bottom:20px}
+    .bar{height:9px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden;margin:16px 0 22px}
+    .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--blue2));}
+    .pillar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+    .pillar{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:14px;text-align:center;padding:11px 6px}
+    .pillar strong{font-family:var(--font-display);font-size:19px}.pillar span{display:block;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.09em}
+    .sentra{margin-top:17px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.24);border-radius:17px;padding:14px 15px;display:flex;justify-content:space-between;gap:10px}
+    .sentra-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#facc15;font-weight:800}.sentra-text{font-size:13px;color:#ffe9b2;margin-top:2px}
+    .sentra-badge{height:max-content;color:#facc15;border:1px solid rgba(250,204,21,.25);padding:5px 9px;border-radius:99px;font-size:12px;font-weight:800}
+
+    section{padding:82px 0;border-top:1px solid rgba(255,255,255,.055)}
+    .section-head{max-width:760px;margin-bottom:36px}
+    .kicker{font-size:12px;color:#7bbcff;text-transform:uppercase;font-weight:800;letter-spacing:.11em;margin-bottom:12px}
+    h2{font-family:var(--font-display);font-size:clamp(34px,4.5vw,56px);line-height:1.03;letter-spacing:-.055em;margin-bottom:14px}
+    .lead{color:#b7c7db;font-size:18px;max-width:720px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;padding:25px;
+      backdrop-filter:blur(15px);
+      box-shadow:0 8px 28px rgba(0,0,0,.18);
+      transition:.22s all;
+    }
+    .card:hover{transform:translateY(-3px);border-color:rgba(96,165,250,.34)}
+    .icon{width:43px;height:43px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;font-weight:850;font-size:14px}
+    .icon.blue{background:rgba(59,130,246,.13);color:#93c5fd}.icon.teal{background:rgba(20,184,166,.13);color:#5eead4}.icon.amber{background:rgba(245,158,11,.13);color:#facc15}.icon.purple{background:rgba(139,92,246,.15);color:#c4b5fd}
+    .card h3{font-size:18px;margin-bottom:9px}.card p{font-size:14px;color:#b7c7db}
+    .tag{display:inline-flex;border:1px solid var(--line2);background:rgba(255,255,255,.055);border-radius:999px;padding:6px 10px;color:#d6e5f6;font-size:12px;font-weight:700;margin:4px 5px 0 0}
+
+    .architecture{
+      display:grid;gap:10px;margin-top:32px;
+    }
+    .arch-row{
+      display:grid;grid-template-columns:230px 1fr 110px;gap:18px;align-items:center;
+      background:rgba(255,255,255,.045);border:1px solid var(--line);
+      border-radius:17px;padding:16px 18px;
+    }
+    .arch-row.core{border-color:rgba(20,184,166,.35);background:rgba(20,184,166,.08)}
+    .arch-name{font-weight:800;color:white;font-size:14px}.arch-desc{color:#aebfd5;font-size:13px}.arch-status{text-align:right;font-size:12px;font-weight:850;border-radius:999px;padding:6px 9px;border:1px solid var(--line2)}
+    .live{color:#7df7df;background:rgba(20,184,166,.08)}.pilot{color:#93c5fd;background:rgba(59,130,246,.08)}.ready{color:#facc15;background:rgba(245,158,11,.08)}
+
+    .modules{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .module{text-align:center;padding:24px 14px}.module .abbr{font-size:11px;color:var(--muted);font-weight:850;letter-spacing:.10em}.module h3{margin:10px 0 6px}.module p{font-size:12px}
+
+    .output-row{display:flex;gap:15px;align-items:flex-start;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:18px;padding:18px}
+    .output-dot{width:9px;height:9px;border-radius:50%;background:var(--teal);margin-top:8px;box-shadow:0 0 18px var(--teal)}
+    .output-row strong{display:block;margin-bottom:3px}.output-row span{color:#aebfd5;font-size:14px}
+
+    .cta{
+      background:
+        radial-gradient(circle at top left, rgba(20,184,166,.20), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,.20), transparent 34%),
+        rgba(16,29,54,.70);
+      border:1px solid var(--line);
+      border-radius:32px;padding:46px;text-align:center;box-shadow:var(--shadow);
+    }
+    .cta p{color:#b8c8dd;max-width:690px;margin:0 auto 26px}
+
+    footer{padding:45px 0;border-top:1px solid var(--line);color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+    footer h4{color:white;margin-bottom:10px}.fine{font-size:12px;margin-top:25px;border-top:1px solid var(--line);padding-top:20px}
+
+    @media(max-width:980px){
+      .hero-grid,.grid-2,.grid-3,.grid-4,.footer-grid{grid-template-columns:1fr}
+      .score-panel{display:none}
+      .modules{grid-template-columns:repeat(2,1fr)}
+      .arch-row{grid-template-columns:1fr}.arch-status{text-align:left;width:max-content}
+      .nav-links{display:none}
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
+    }
+  
+    .demo-showcase{
+      background:
+        radial-gradient(circle at 0% 0%, rgba(20,184,166,.16), transparent 30%),
+        radial-gradient(circle at 100% 30%, rgba(59,130,246,.18), transparent 34%),
+        rgba(16,29,54,.72);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:32px;
+      padding:32px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+      margin-top:32px;
+    }
+    .demo-head{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:22px;
+      align-items:start;
+      margin-bottom:24px;
+    }
+    .demo-score{
+      min-width:230px;
+      text-align:center;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:24px;
+      padding:22px;
+    }
+    .demo-score .value{
+      font-family:var(--font-display);
+      font-size:60px;
+      line-height:.9;
+      letter-spacing:-.06em;
+      font-weight:800;
+      background:linear-gradient(135deg,#60a5fa,#22d3ee,#14b8a6);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .demo-score .label{color:var(--muted);font-size:12px;margin-top:8px}
+    .demo-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+    .demo-table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;background:rgba(255,255,255,.035)}
+    .demo-table th,.demo-table td{border-bottom:1px solid rgba(255,255,255,.08);padding:11px 12px;text-align:left;font-size:13px}
+    .demo-table th{color:#cde0f5;background:rgba(255,255,255,.055);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .demo-pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0}
+    .demo-pillar{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);border-radius:16px;padding:13px;text-align:center}
+    .demo-pillar strong{font-family:var(--font-display);font-size:23px}
+    .demo-pillar span{display:block;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em}
+    .demo-alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .demo-alert{border-radius:16px;padding:14px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045)}
+    .demo-alert strong{display:block;font-size:15px}
+    .demo-alert span{font-size:12px;color:var(--muted)}
+    .mini-scenarios{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+    .mini-metric{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:12px}
+    .mini-metric strong{display:block;font-family:var(--font-display);font-size:24px}
+    .mini-metric span{font-size:11px;color:var(--muted)}
+    .demo-note{margin-top:18px;color:#b8c8dd;font-size:14px}
+    @media(max-width:980px){
+      .demo-head,.demo-grid{grid-template-columns:1fr}
+      .demo-score{min-width:0}
+      .demo-pillars,.demo-alerts,.mini-scenarios{grid-template-columns:1fr 1fr}
+    }
+
+  
+    /* QNX light UX refinements based on homepage hierarchy feedback */
+    .proof-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin:24px 0 36px;
+    }
+    .proof-card{
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:16px;
+      backdrop-filter:blur(12px);
+    }
+    .proof-card strong{
+      display:block;
+      font-family:var(--font-display);
+      font-size:28px;
+      letter-spacing:-.04em;
+      color:white;
+    }
+    .proof-card span{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+    .stack-simple{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+    .stack-card{
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:20px;
+      padding:18px;
+      min-height:150px;
+    }
+    .stack-card .step{
+      display:inline-flex;
+      width:28px;height:28px;
+      border-radius:10px;
+      align-items:center;justify-content:center;
+      background:rgba(59,130,246,.14);
+      color:#93c5fd;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+    .stack-card strong{display:block;margin-bottom:7px}
+    .stack-card span{display:block;color:var(--muted);font-size:13px}
+    .sector-paths{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .sector-path{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.045);
+      border-radius:18px;
+      padding:16px;
+      transition:.2s all;
+    }
+    .sector-path:hover{
+      transform:translateY(-2px);
+      border-color:rgba(96,165,250,.35);
+      background:rgba(255,255,255,.065);
+    }
+    .sector-path strong{display:block;margin-bottom:4px}
+    .sector-path span{font-size:12px;color:var(--muted)}
+    .details-panel{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      background:rgba(255,255,255,.035);
+      padding:18px 20px;
+      margin-top:22px;
+    }
+    .details-panel summary{
+      cursor:pointer;
+      font-weight:800;
+      color:#dcecff;
+    }
+    .details-panel p{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    @media(max-width:980px){
+      .proof-strip,.stack-simple,.sector-paths{grid-template-columns:1fr}
+    }
+
+  </style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="QuantisNexis home">
+      <div class="logo">Q</div>
+      <div><div class="brand-name">QuantisNexis™ / QNX™</div><div class="brand-sub">Organizational intelligence engine</div></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#modules">Modules</a>
+      <a href="#demo">Demo</a>
+      <a href="#outputs">Outputs</a>
+      <a href="#pilot">Pilot</a>
+    </nav>
+    <a class="btn btn-primary" href="mailto:info@quantisnexis.com">Request pilot</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> QNX v4.2 pilot-ready engine</div>
+        <h1>Pilot-ready intelligence for <span class="grad">resilient decisions.</span></h1>
+        <p>QuantisNexis™ helps leaders see where institutional resilience is strong, where it is fragile, and what to do next—using the QNX v4.2 engine, Quantis Index™, QuantisSentra™ risk signals, and Quantis Advisors™ action logic.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Demo%20Request">Book a demo</a>
+          <a class="btn btn-soft" href="#demo">View NYC case study</a>
+        </div>
+
+        <div class="proof-strip">
+          <div class="proof-card"><strong>0.542</strong><span>NYC demo Quantis Index</span></div>
+          <div class="proof-card"><strong>AMBER</strong><span>QuantisSentra risk signal</span></div>
+          <div class="proof-card"><strong>RE</strong><span>Top synergy bottleneck</span></div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">25</div><div class="stat-label">core variables</div></div>
+          <div class="stat"><div class="stat-num">5</div><div class="stat-label">intelligence pillars</div></div>
+          <div class="stat"><div class="stat-num">50+</div><div class="stat-label">questionnaire scaffold</div></div>
+          <div class="stat"><div class="stat-num">v4.2</div><div class="stat-label">pilot-ready release</div></div>
+        </div>
+      </div>
+
+      <aside class="score-panel">
+        <div class="panel-label">Quantis Index™ — output preview</div>
+        <div class="score-big">71.4</div>
+        <div class="score-sub">95% CI: 66.2–76.6 · sector: university</div>
+        <div class="class-badge"><span class="dot"></span> Moderate-High readiness</div>
+        <div class="bar"><div class="fill" style="width:71.4%"></div></div>
+        <div class="pillar-grid">
+          <div class="pillar"><strong>73</strong><span>EI</span></div>
+          <div class="pillar"><strong>61</strong><span>RE</span></div>
+          <div class="pillar"><strong>73</strong><span>AD</span></div>
+          <div class="pillar"><strong>72</strong><span>IN</span></div>
+          <div class="pillar"><strong>75</strong><span>ET</span></div>
+        </div>
+        <div class="sentra">
+          <div><div class="sentra-title">QuantisSentra™</div><div class="sentra-text">AMBER — elevated risk · driver: renewal failure</div></div>
+          <div class="sentra-badge">AMBER</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="platform">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Platform</div>
+        <h2>A unified engine, not a black-box AI tool.</h2>
+        <p class="lead">QNX Core™ provides the mathematical foundation, while advanced layers—RADAR, synergy, copula dependency, EFQM/Baldrige benchmarking, ML readiness, QuantisSentra, Quantis Advisors, and Quantis Narrator—add transparent diagnostic intelligence around the core result.</p>
+
+        <details class="details-panel">
+          <summary>View technical foundation retained for methodology users</summary>
+          <p>QNX Core™ is represented as a 25-variable engine integrating BMS, ATCG, VUCA, WOWA/Orness weighting, and the master equation. The platform also includes RADAR scoring, EFQM/Baldrige anchoring, Diamond-style ESI synergy, copula dependency diagnostics, ML readiness, outcome-label workflow, and Tito-Conti advisor logic.</p>
+        </details>
+
+      </div>
+
+      <div class="grid-4">
+        <div class="card"><div class="icon blue">QNC</div><h3>QNX Core™</h3><p>The deterministic scoring engine. Produces the Quantis Index from normalized organizational variables and pillar logic.</p></div>
+        <div class="card"><div class="icon teal">QS</div><h3>QuantisSentra™</h3><p>Risk and decay signal layer using critical thresholds, synergy bottlenecks, anomaly flags, and trend conditions.</p></div>
+        <div class="card"><div class="icon amber">QA</div><h3>Quantis Advisors™</h3><p>Tito-Conti-based diagnosis, treatment, and review logic with sector-specific ideal profiles.</p></div>
+        <div class="card"><div class="icon purple">QN</div><h3>Quantis Narrator™</h3><p>Score-safe explanation layer. It explains QNX outputs but does not invent or alter scores.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Architecture</div>
+        <h2>QNX v4.2 system architecture.</h2>
+        <p class="lead">The public website now reflects the current production direction: QNX v4.2 is pilot-ready, non-destructive, and designed to support dashboard, API, report, and future supervised ML workflows.</p>
+      </div>
+
+
+      <div class="stack-simple">
+        <div class="stack-card"><div class="step">1</div><strong>QNX Core™</strong><span>25-variable engine using BMS, ATCG, VUCA, WOWA/Orness, and the master equation to generate the Quantis Index™.</span></div>
+        <div class="stack-card"><div class="step">2</div><strong>Risk Logic</strong><span>QuantisSentra™ highlights decay, anomaly, threshold, synergy, and tail-risk signals.</span></div>
+        <div class="stack-card"><div class="step">3</div><strong>Decision Intelligence</strong><span>Quantis Advisors™ converts diagnostics into sector-specific priorities and actions.</span></div>
+        <div class="stack-card"><div class="step">4</div><strong>Executive Narration</strong><span>Quantis Narrator™ turns engine outputs into score-safe executive summaries and reports.</span></div>
+      </div>
+
+      <div class="architecture">
+        <div class="arch-row"><div class="arch-name">01 · Client input</div><div class="arch-desc">Likert, EFQM A/B/C/D, Diamond multi-rater, RADAR inputs, cohort/history records, documents, KPIs.</div><div class="arch-status pilot">Pilot</div></div>
+        <div class="arch-row"><div class="arch-name">02 · Validation</div><div class="arch-desc">Base-result validation, numeric checks, fallback warning, and output contract checks.</div><div class="arch-status live">Live</div></div>
+        <div class="arch-row core"><div class="arch-name">03 · QNX Core™ Engine</div><div class="arch-desc">25-variable QNX Core engine integrating BMS, ATCG, VUCA, WOWA/Orness weighting, and the master equation to generate the Quantis Index™ before advanced diagnostic layers are applied.</div><div class="arch-status live">Core</div></div>
+        <div class="arch-row"><div class="arch-name">04 · RADAR scoring</div><div class="arch-desc">Approach × deployment scoring with RADAR-to-variable mapping.</div><div class="arch-status live">Live</div></div>
+        <div class="arch-row"><div class="arch-name">05 · Benchmarking</div><div class="arch-desc">EFQM/Baldrige equivalent bands, award-readiness signals, and client-facing maturity language.</div><div class="arch-status live">Live</div></div>
+        <div class="arch-row"><div class="arch-name">06 · Synergy + copula</div><div class="arch-desc">Diamond ESI proxy, copula-style dependency diagnostics, joint low-tail risk, and variance guard.</div><div class="arch-status live">Live</div></div>
+        <div class="arch-row"><div class="arch-name">07 · QuantisSentra™</div><div class="arch-desc">Decay, stagnation, critical thresholds, anomaly signals, and trend-aware risk detection.</div><div class="arch-status pilot">Pilot</div></div>
+        <div class="arch-row"><div class="arch-name">08 · ML layer</div><div class="arch-desc">Feature store, outcome-label workflow, readiness scoring, clustering, anomaly detection, and time-series utilities. Supervised ML activates after pilot data.</div><div class="arch-status ready">Data-gated</div></div>
+        <div class="arch-row"><div class="arch-name">09 · Quantis Advisors™</div><div class="arch-desc">Sector-specific Tito-Conti diagnosis, treatment actions, and review cycle.</div><div class="arch-status live">Live</div></div>
+        <div class="arch-row"><div class="arch-name">10 · Quantis Narrator™</div><div class="arch-desc">Template report blocks and optional LLM hook with no-score-invention guardrail.</div><div class="arch-status pilot">Pilot</div></div>
+        <div class="arch-row"><div class="arch-name">11 · Output + API</div><div class="arch-desc">Dashboard JSON, report templates, API-ready output, and future branded PDF/HTML reports.</div><div class="arch-status pilot">Next</div></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="sectors">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Sector paths</div>
+        <h2>Start from your operating context.</h2>
+        <p class="lead">QNX can present the same core engine through sector-specific language, ideal profiles, benchmarks, and advisory logic.</p>
+      </div>
+      <div class="sector-paths">
+        <a class="sector-path" href="#modules"><strong>Climate</strong><span>Flood, drought, infrastructure, adaptation, public risk.</span></a>
+        <a class="sector-path" href="#modules"><strong>Government</strong><span>Agencies, cities, counties, governance readiness.</span></a>
+        <a class="sector-path" href="#modules"><strong>University</strong><span>Institutional quality, research, resilience, operations.</span></a>
+        <a class="sector-path" href="#modules"><strong>Health</strong><span>Reliability, trust, safety, continuity, compliance.</span></a>
+        <a class="sector-path" href="#modules"><strong>Enterprise</strong><span>Performance, resilience, governance, transformation.</span></a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="modules">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Modules</div>
+        <h2>One engine. Multiple sector contexts.</h2>
+        <p class="lead">Each module uses the same QNX Core foundation but adapts ideal profiles, thresholds, benchmarks, and advisory language for the sector context.</p>
+      </div>
+      <div class="modules">
+        <div class="card module"><div class="abbr">QNX</div><h3>Climate™</h3><p>Water, infrastructure, resilience, environmental agencies.</p></div>
+        <div class="card module"><div class="abbr">QNX</div><h3>Government™</h3><p>Cities, counties, state agencies, public governance.</p></div>
+        <div class="card module"><div class="abbr">QNX</div><h3>University™</h3><p>Higher education, research centers, institutional quality.</p></div>
+        <div class="card module"><div class="abbr">QNX</div><h3>Health™</h3><p>Health systems, service reliability, governance, safety.</p></div>
+        <div class="card module"><div class="abbr">QNX</div><h3>Enterprise™</h3><p>Organizations, non-profits, consulting and performance teams.</p></div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="demo">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Demo case</div>
+        <h2>QNX v4.2 applied to NYC urban flood governance.</h2>
+        <p class="lead">This clean demo case translates the ASCE NYC organizational genomics package into QNX outputs: Quantis Index, QuantisSentra flag, synergy bottleneck, copula tail-risk signal, Tito-Conti priorities, and client-ready report narrative.</p>
+      </div>
+
+      <div class="demo-showcase">
+        <div class="demo-head">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Live demo package · NYC compound flood hazards</div>
+            <h3 style="font-family:var(--font-display);font-size:34px;letter-spacing:-.04em;margin:0 0 12px">NYC Urban Flood Governance Under Compound Flood Hazards</h3>
+            <p class="muted">Based on the ASCE NYC submission package and the quantitative organizational genomics framework. Authorship corrected as: <strong>Morteza Shakeri Majd, Ph.D.; Dr. Mehrdad Rastgou</strong>.</p>
+            <div style="margin-top:14px">
+              <span class="tag">Government / climate resilience</span>
+              <span class="tag">Urban flood governance</span>
+              <span class="tag">Compound hazards</span>
+              <span class="tag">Pilot demo</span>
+            </div>
+          </div>
+          <div class="demo-score">
+            <div class="value">0.535</div>
+            <div class="label">Quantis Index™</div>
+            <div class="bar"><div class="fill" style="width:53.5%"></div></div>
+            <div class="label">535.3/1000 · Moderate</div>
+          </div>
+        </div>
+
+        <div class="demo-grid">
+          <div class="card" style="box-shadow:none">
+            <h3>QNX pillar profile</h3>
+            <p>NYC shows strong analytics and governance capacity, while infrastructure resilience/process stability is the main bottleneck under compound flood stress.</p>
+            <div class="demo-pillars">
+              <div class="demo-pillar"><strong>0.77</strong><span>EI</span></div>
+              <div class="demo-pillar"><strong>0.54</strong><span>RE</span></div>
+              <div class="demo-pillar"><strong>0.79</strong><span>AD</span></div>
+              <div class="demo-pillar"><strong>0.81</strong><span>IN</span></div>
+              <div class="demo-pillar"><strong>0.76</strong><span>ET</span></div>
+            </div>
+            <div class="demo-alerts">
+              <div class="demo-alert"><strong>AMBER</strong><span>QuantisSentra™ flag</span></div>
+              <div class="demo-alert"><strong>RE</strong><span>Synergy bottleneck</span></div>
+              <div class="demo-alert"><strong>0.750</strong><span>Low-tail probability</span></div>
+            </div>
+            <p class="demo-note"><strong>Client narrative:</strong> NYC demonstrates moderate resilience under high compound hazard stress. Strong planning and governance partially offset exposure, but resilience/process stability remains the key improvement target.</p>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <h3>Tito-Conti priority areas</h3>
+            <table class="demo-table">
+              <thead><tr><th>Rank</th><th>Pillar</th><th>Actual</th><th>Target</th><th>Status</th><th>Priority</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>RE</td><td>0.54</td><td>0.82</td><td>WARNING</td><td>0.58</td></tr>
+<tr><td>2</td><td>ET</td><td>0.76</td><td>0.88</td><td>STABLE</td><td>0.12</td></tr>
+<tr><td>3</td><td>EI</td><td>0.77</td><td>0.82</td><td>STABLE</td><td>0.05</td></tr>
+<tr><td>4</td><td>AD</td><td>0.79</td><td>0.80</td><td>STABLE</td><td>0.01</td></tr>
+<tr><td>5</td><td>IN</td><td>0.81</td><td>0.80</td><td>STRONG</td><td>0.00</td></tr>
+              </tbody>
+            </table>
+            <p class="demo-note"><strong>Top priority:</strong> RE — strengthen flood-critical continuity pathways, cross-agency resilience drills, and capital-program triggers.</p>
+          </div>
+        </div>
+
+        <div class="card" style="box-shadow:none;margin-top:20px">
+          <h3>Scenario results and copula tail-risk signal</h3>
+          <p>The demo uses scenario outputs from the NYC package to create a simple joint low-tail risk proxy. The resulting copula-style diagnostic flag is <strong>elevated_cohort_tail_probability</strong>.</p>
+          <div class="mini-scenarios">
+            <div class="mini-metric"><strong>0.54</strong><span>Current</span></div>
+<div class="mini-metric"><strong>0.49</strong><span>2050 Moderate Adaptation</span></div>
+<div class="mini-metric"><strong>0.61</strong><span>2050 High Adaptation</span></div>
+<div class="mini-metric"><strong>0.37</strong><span>2100 No Action</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="outputs">
+    <div class="wrap grid-2">
+      <div>
+        <div class="kicker">Outputs</div>
+        <h2>Executive-ready intelligence. Audit-ready evidence.</h2>
+        <p class="lead">QNX produces structured outputs for leadership, technical teams, and pilot partners. The same engine can support dashboard views, reports, JSON/API responses, and Narrator summaries.</p>
+        <div style="margin-top:22px">
+          <span class="tag">Quantis Index™</span>
+          <span class="tag">Risk signals</span>
+          <span class="tag">Synergy bottlenecks</span>
+          <span class="tag">Copula tail risk</span>
+          <span class="tag">Tito-Conti actions</span>
+          <span class="tag">ML readiness</span>
+        </div>
+      </div>
+      <div style="display:grid;gap:12px">
+        <div class="output-row"><div class="output-dot"></div><div><strong>Quantis Index™</strong><span>Composite organizational intelligence score with pillar-level diagnostics.</span></div></div>
+        <div class="output-row"><div class="output-dot"></div><div><strong>QuantisSentra™ risk alerts</strong><span>Threshold, decay, anomaly, and tail-risk signals for executive attention.</span></div></div>
+        <div class="output-row"><div class="output-dot"></div><div><strong>Quantis Advisors™ action map</strong><span>Prioritized treatment recommendations based on sector and weakest diagnostic areas.</span></div></div>
+        <div class="output-row"><div class="output-dot"></div><div><strong>Quantis Narrator™ summaries</strong><span>Score-safe executive explanations that reference engine output, not invented scores.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pilot">
+    <div class="wrap">
+      <div class="cta">
+        <div class="kicker">Pilot-ready</div>
+        <h2>Ready for controlled pilots, demos, and partner feedback.</h2>
+        <p>QNX v4.2 is ready for website synchronization, demonstration cases, API wrapper planning, and pilot data collection. Supervised ML becomes stronger as pilot outcome labels are collected.</p>
+        <div class="actions" style="justify-content:center;margin:0">
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com">Request pilot discussion</a>
+          <a class="btn btn-soft" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Demo%20Request">Request demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><h4>QuantisNexis™ / QNX™</h4><p>Organizational decision intelligence for resilient institutions. Built by Onyx Moorland Environmental Engineering.</p></div>
+      <div><h4>Platform</h4><p>QNX Core™<br/>QuantisSentra™<br/>Quantis Advisors™<br/>Quantis Narrator™</p></div>
+      <div><h4>Contact</h4><p><a href="mailto:info@quantisnexis.com">info@quantisnexis.com</a><br/>quantisnexis.com</p></div>
+    </div>
+    <div class="fine">© 2026 Onyx Moorland Environmental Engineering. QuantisNexis™, QNX™, QuantisSentra™, Quantis Advisors™, Quantis Narrator™, and Quantis Index™ are platform marks of Onyx Moorland Environmental Engineering. All rights reserved.</div>
+  </div>
+</footer>
+</body>
+</html>
