@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMQL93EE8M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BMQL93EE8M');
-</script>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>QuantisNexis™ | QNX v4.2 Pilot-Ready Decision Intelligence Engine</title>
@@ -399,6 +390,93 @@
       .proof-strip,.stack-simple,.sector-paths{grid-template-columns:1fr}
     }
 
+  
+    /* ================================
+       v4.2.1 Mobile Navigation Fix
+       - menu is hidden by default
+       - opens as overlay only after hamburger click
+       - closes on link click, outside tap, scroll, resize
+       ================================ */
+    .mobile-backdrop{
+      display:none;
+      position:fixed;
+      inset:74px 0 0 0;
+      z-index:98;
+      background:rgba(2,8,18,.55);
+      backdrop-filter:blur(5px);
+    }
+    .mobile-backdrop.open{display:block}
+    body.menu-open{overflow:hidden}
+
+    @media(max-width:980px){
+      .menu-toggle{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        width:54px;
+        height:54px;
+        border-radius:18px;
+        padding:0;
+        font-size:24px;
+        line-height:1;
+        text-decoration:none;
+      }
+      .mobile-menu{
+        display:none !important;
+        position:fixed;
+        top:74px;
+        left:0;
+        right:0;
+        z-index:120;
+        padding:10px 0 18px;
+        max-height:calc(100vh - 74px);
+        overflow-y:auto;
+        background:rgba(7,17,31,.97);
+        border-top:1px solid rgba(255,255,255,.08);
+        border-bottom:1px solid rgba(255,255,255,.12);
+        box-shadow:0 32px 70px rgba(0,0,0,.45);
+        backdrop-filter:blur(18px);
+      }
+      .mobile-menu.open{display:block !important}
+      .mobile-menu a{
+        display:block;
+        padding:15px 28px;
+        color:#d7e6f8;
+        font-size:17px;
+        border-bottom:1px solid rgba(255,255,255,.055);
+      }
+      .mobile-menu a:hover{background:rgba(255,255,255,.06)}
+    }
+
+    /* Small polish refinements */
+    .hero{padding-top:84px}
+    .hero .actions{margin-bottom:28px}
+    .nav{box-shadow:0 10px 34px rgba(0,0,0,.20)}
+    .portal-card{width:min(560px,calc(100vw - 36px))}
+    .demo-showcase{position:relative;overflow:hidden}
+    .demo-showcase:before{
+      content:"";
+      position:absolute;
+      inset:-80px auto auto -80px;
+      width:220px;height:220px;
+      border-radius:50%;
+      background:rgba(20,184,166,.12);
+      filter:blur(18px);
+      pointer-events:none;
+    }
+    .demo-showcase > *{position:relative}
+    .stack-simple.compact-stack{
+      margin-top:18px;
+      grid-template-columns:repeat(4,1fr);
+    }
+    @media(max-width:980px){
+      .hero{padding-top:54px}
+      .proof-strip{margin-bottom:22px}
+      .stack-simple.compact-stack{grid-template-columns:1fr}
+      .brand-name{font-size:16px}
+      .brand-sub{font-size:10px}
+    }
+
   </style>
 </head>
 
@@ -442,9 +520,9 @@
       <a class="btn btn-login" href="#portal">Login</a>
       <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Request pilot</a>
     </div>
-    <a class="menu-toggle" href="#mobile-nav" aria-label="Open mobile navigation">☰</a>
+    <button class="menu-toggle" id="mobileToggle" aria-label="Open mobile navigation" aria-expanded="false" type="button">☰</button>
   </div>
-  <div id="mobile-nav" class="mobile-menu">
+  <div id="mobile-nav" class="mobile-menu" aria-label="Mobile navigation">
     <a href="#platform">Platform</a>
     <a href="#architecture">Architecture</a>
     <a href="#sectors">Sectors</a>
@@ -456,6 +534,7 @@
     <a href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Email: Request pilot</a>
   </div>
 </header>
+<div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
 
 <div id="portal" class="portal-modal" role="dialog" aria-modal="true" aria-labelledby="portal-title">
   <div class="portal-card">
@@ -480,11 +559,11 @@
       <div>
         <div class="eyebrow"><span class="dot"></span> QNX v4.2 pilot-ready engine</div>
         <h1>Decision intelligence for <span class="grad">resilient institutions.</span></h1>
-        <p>QuantisNexis™ transforms organizational, governance, resilience, and performance data into a defensible Quantis Index™, risk signals, and prioritized action pathways for agencies, universities, health systems, enterprises, and climate-facing organizations.</p>
+        <p>QuantisNexis™ transforms organizational, governance, resilience, and performance data into a defensible Quantis Index™, QuantisSentra™ risk signals, and prioritized action pathways for agencies, universities, health systems, enterprises, and climate-facing organizations.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Request a pilot</a>
-          <a class="btn btn-soft" href="#platform">View the QNX platform</a>
-          <a class="btn btn-soft" href="#portal">Login</a>
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Request pilot</a>
+          <a class="btn btn-soft" href="#demo">View NYC demo</a>
+          <a class="btn btn-soft" href="#architecture">View architecture</a>
         </div>
 
         <div class="proof-strip">
@@ -543,7 +622,8 @@
         <div class="card"><div class="icon purple">QN</div><h3>Quantis Narrator™</h3><p>Score-safe explanation layer. It explains QNX outputs but does not invent or alter scores.</p></div>
       </div>
 
-      <div class="stack-simple" style="margin-top:28px">
+      <div class="kicker" style="margin-top:34px">How it works</div>
+      <div class="stack-simple compact-stack">
         <div class="stack-card"><div class="step">1</div><strong>Complete the questionnaire</strong><span>Capture organizational context, governance structure, resilience indicators, and performance data.</span></div>
         <div class="stack-card"><div class="step">2</div><strong>Run the QNX engine</strong><span>Process inputs through scoring, RADAR logic, benchmarking, synergy, and risk-signal layers.</span></div>
         <div class="stack-card"><div class="step">3</div><strong>Review dashboard outputs</strong><span>Interpret the Quantis Index™, Sentra flags, bottlenecks, and prioritized recommendations.</span></div>
@@ -632,7 +712,7 @@
       <div class="demo-showcase">
         <div class="demo-head">
           <div>
-            <div class="eyebrow"><span class="dot"></span> Live demo package · NYC compound flood hazards</div>
+            <div class="eyebrow"><span class="dot"></span> Pilot demo package · NYC compound flood hazards</div>
             <h3 style="font-family:var(--font-display);font-size:34px;letter-spacing:-.04em;margin:0 0 12px">NYC Urban Flood Governance Under Compound Flood Hazards</h3>
             <p class="muted">Based on the ASCE NYC submission package and the quantitative organizational genomics framework. Authorship corrected as: <strong>Morteza Shakeri Majd, Ph.D.; Dr. Mehrdad Rastgou</strong>.</p>
             <div style="margin-top:14px">
@@ -694,6 +774,11 @@
 <div class="mini-metric"><strong>0.61</strong><span>2050 High Adaptation</span></div>
 <div class="mini-metric"><strong>0.37</strong><span>2100 No Action</span></div>
           </div>
+        </div>
+
+        <div class="actions" style="margin:22px 0 0">
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20NYC%20Demo%20Request">Request full NYC demo package</a>
+          <a class="btn btn-soft" href="#outputs">See output types</a>
         </div>
       </div>
     </div>
@@ -764,5 +849,59 @@
     <div class="fine">© 2026 Onyx Moorland Environmental Engineering. QuantisNexis™, QNX™, QuantisSentra™, Quantis Advisors™, Quantis Narrator™, and Quantis Index™ are platform marks of Onyx Moorland Environmental Engineering. All rights reserved.</div>
   </div>
 </footer>
+
+<script>
+(function(){
+  const toggle = document.getElementById('mobileToggle');
+  const menu = document.getElementById('mobile-nav');
+  const backdrop = document.getElementById('mobileBackdrop');
+  if(!toggle || !menu) return;
+
+  function closeMenu(){
+    menu.classList.remove('open');
+    if(backdrop) backdrop.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.textContent = '☰';
+    document.body.classList.remove('menu-open');
+  }
+
+  function openMenu(){
+    menu.classList.add('open');
+    if(backdrop) backdrop.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.textContent = '×';
+    document.body.classList.add('menu-open');
+  }
+
+  toggle.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeMenu);
+  });
+
+  if(backdrop){
+    backdrop.addEventListener('click', closeMenu);
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    if(menu.classList.contains('open') && Math.abs(window.scrollY - lastY) > 8) closeMenu();
+    lastY = window.scrollY;
+  }, {passive:true});
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 980) closeMenu();
+  });
+})();
+</script>
+
 </body>
 </html>
