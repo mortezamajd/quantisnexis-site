@@ -79,8 +79,29 @@
     }
     .brand-name{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.03em}
     .brand-sub{font-size:11px;color:var(--muted);margin-top:-2px}
-    .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;color:#c3d3e8}
-    .nav-links a{transition:.2s color}.nav-links a:hover{color:white}
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:14px;color:#c3d3e8}
+    .nav-links a,.dropbtn{transition:.2s color}.nav-links a:hover,.dropbtn:hover{color:white}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .dropdown{position:relative}
+    .dropbtn{background:transparent;border:0;color:#c3d3e8;font:inherit;cursor:pointer;padding:22px 0}
+    .dropdown-menu{
+      position:absolute;top:48px;left:50%;transform:translateX(-50%) translateY(8px);
+      min-width:245px;padding:10px;opacity:0;visibility:hidden;pointer-events:none;
+      background:rgba(7,17,31,.96);border:1px solid var(--line2);border-radius:18px;
+      box-shadow:0 22px 60px rgba(0,0,0,.36);backdrop-filter:blur(18px);transition:.18s all;
+    }
+    .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+    .dropdown-menu a{display:block;padding:11px 12px;border-radius:12px;color:#d7e6f8}
+    .dropdown-menu a:hover{background:rgba(255,255,255,.07)}
+    .dropdown-menu small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+    .btn-login{background:rgba(255,255,255,.05);color:#dcecff}
+    .btn-login:hover{background:rgba(255,255,255,.10)}
+    .mobile-menu{display:none}
+    .menu-toggle{display:none;background:rgba(255,255,255,.06);border:1px solid var(--line2);color:white;border-radius:14px;padding:10px 12px;font-weight:800}
+    .portal-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(2,6,23,.76);backdrop-filter:blur(10px)}
+    .portal-modal:target{display:flex}
+    .portal-card{max-width:560px;background:linear-gradient(180deg,rgba(16,29,54,.98),rgba(7,17,31,.98));border:1px solid var(--line2);border-radius:28px;padding:30px;box-shadow:var(--shadow)}
+    .portal-card h3{font-family:var(--font-display);font-size:30px;letter-spacing:-.04em;margin-bottom:10px}.portal-card p{color:#b8c8dd;margin-bottom:18px}.portal-actions{display:flex;gap:10px;flex-wrap:wrap}.close-modal{margin-left:auto}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       border-radius:999px;padding:11px 18px;font-weight:650;font-size:14px;
@@ -206,7 +227,11 @@
       .score-panel{display:none}
       .modules{grid-template-columns:repeat(2,1fr)}
       .arch-row{grid-template-columns:1fr}.arch-status{text-align:left;width:max-content}
-      .nav-links{display:none}
+      .nav-links,.nav-actions{display:none}
+      .menu-toggle{display:inline-flex}
+      .mobile-menu{display:block;border-top:1px solid var(--line);padding:12px 0 16px}
+      .mobile-menu a{display:block;padding:10px 28px;color:#d7e6f8}
+      .mobile-menu a:hover{background:rgba(255,255,255,.06)}
       .hero-stats{grid-template-columns:repeat(2,1fr)}
     }
   
@@ -373,31 +398,84 @@
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="QuantisNexis home">
       <div class="logo">Q</div>
-      <div><div class="brand-name">QuantisNexis™ / QNX™</div><div class="brand-sub">Organizational intelligence engine</div></div>
+      <div><div class="brand-name">QuantisNexis™ / QNX™</div><div class="brand-sub">Decision intelligence platform</div></div>
     </a>
-    <nav class="nav-links">
-      <a href="#platform">Platform</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#sectors">Sectors</a>
-      <a href="#modules">Modules</a>
-      <a href="#demo">Demo</a>
-      <a href="#outputs">Outputs</a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">Platform ▾</button>
+        <div class="dropdown-menu">
+          <a href="#platform">QNX overview<small>Unified engine, not black-box AI</small></a>
+          <a href="#architecture">Architecture<small>Core, Sentra, Advisors, Narrator</small></a>
+          <a href="#outputs">Outputs<small>Index, risk flags, reports, API-ready JSON</small></a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">Solutions ▾</button>
+        <div class="dropdown-menu">
+          <a href="#sectors">Sector paths<small>Climate, government, university, health, enterprise</small></a>
+          <a href="#modules">Core modules<small>One engine across sector contexts</small></a>
+          <a href="#demo">NYC demo proof<small>Compound flood governance case</small></a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">Resources ▾</button>
+        <div class="dropdown-menu">
+          <a href="#demo">Demo case<small>Pilot-ready proof of concept</small></a>
+          <a href="mailto:info@quantisnexis.com?subject=QuantisNexis%20White%20Paper%20Request">Request white paper<small>Methodology and validation notes</small></a>
+          <a href="mailto:info@quantisnexis.com?subject=QuantisNexis%20API%20Discussion">API discussion<small>Future integration planning</small></a>
+        </div>
+      </div>
       <a href="#pilot">Pilot</a>
     </nav>
-    <a class="btn btn-primary" href="mailto:info@quantisnexis.com">Request pilot</a>
+
+    <div class="nav-actions">
+      <a class="btn btn-login" href="#portal">Login</a>
+      <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Request pilot</a>
+    </div>
+    <a class="menu-toggle" href="#mobile-nav" aria-label="Open mobile navigation">☰</a>
+  </div>
+  <div id="mobile-nav" class="mobile-menu">
+    <a href="#platform">Platform</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#modules">Modules</a>
+    <a href="#demo">Demo</a>
+    <a href="#outputs">Outputs</a>
+    <a href="#pilot">Pilot</a>
+    <a href="#portal">Login / portal</a>
+    <a href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Email: Request pilot</a>
   </div>
 </header>
+
+<div id="portal" class="portal-modal" role="dialog" aria-modal="true" aria-labelledby="portal-title">
+  <div class="portal-card">
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div>
+        <div class="kicker">Pilot portal placeholder</div>
+        <h3 id="portal-title">Login layer prepared for the SaaS phase.</h3>
+      </div>
+      <a class="btn btn-soft close-modal" href="#top" aria-label="Close login modal">×</a>
+    </div>
+    <p>This static GitHub Pages homepage can show a portal entry point, but real authentication requires a later SaaS stack such as Clerk/Auth0, FastAPI or Next.js API routes, and a database. For now, use this layer to signal the planned pilot-client portal.</p>
+    <div class="portal-actions">
+      <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Portal%20Access">Request portal access</a>
+      <a class="btn btn-soft" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Account%20Setup">Set up pilot account by email</a>
+    </div>
+  </div>
+</div>
 
 <main id="top">
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow"><span class="dot"></span> QNX v4.2 pilot-ready engine</div>
-        <h1>Pilot-ready intelligence for <span class="grad">resilient decisions.</span></h1>
-        <p>QuantisNexis™ helps leaders see where institutional resilience is strong, where it is fragile, and what to do next—using the QNX v4.2 engine, Quantis Index™, QuantisSentra™ risk signals, and Quantis Advisors™ action logic.</p>
+        <h1>Decision intelligence for <span class="grad">resilient institutions.</span></h1>
+        <p>QuantisNexis™ transforms organizational, governance, resilience, and performance data into a defensible Quantis Index™, risk signals, and prioritized action pathways for agencies, universities, health systems, enterprises, and climate-facing organizations.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Demo%20Request">Book a demo</a>
-          <a class="btn btn-soft" href="#demo">View NYC case study</a>
+          <a class="btn btn-primary" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request">Request a pilot</a>
+          <a class="btn btn-soft" href="#platform">View the QNX platform</a>
+          <a class="btn btn-soft" href="#portal">Login</a>
         </div>
 
         <div class="proof-strip">
@@ -454,6 +532,13 @@
         <div class="card"><div class="icon teal">QS</div><h3>QuantisSentra™</h3><p>Risk and decay signal layer using critical thresholds, synergy bottlenecks, anomaly flags, and trend conditions.</p></div>
         <div class="card"><div class="icon amber">QA</div><h3>Quantis Advisors™</h3><p>Tito-Conti-based diagnosis, treatment, and review logic with sector-specific ideal profiles.</p></div>
         <div class="card"><div class="icon purple">QN</div><h3>Quantis Narrator™</h3><p>Score-safe explanation layer. It explains QNX outputs but does not invent or alter scores.</p></div>
+      </div>
+
+      <div class="stack-simple" style="margin-top:28px">
+        <div class="stack-card"><div class="step">1</div><strong>Complete the questionnaire</strong><span>Capture organizational context, governance structure, resilience indicators, and performance data.</span></div>
+        <div class="stack-card"><div class="step">2</div><strong>Run the QNX engine</strong><span>Process inputs through scoring, RADAR logic, benchmarking, synergy, and risk-signal layers.</span></div>
+        <div class="stack-card"><div class="step">3</div><strong>Review dashboard outputs</strong><span>Interpret the Quantis Index™, Sentra flags, bottlenecks, and prioritized recommendations.</span></div>
+        <div class="stack-card"><div class="step">4</div><strong>Export a client-ready report</strong><span>Use score-safe summaries, technical notes, and leadership-facing action pathways.</span></div>
       </div>
     </div>
   </section>
@@ -630,6 +715,21 @@
     </div>
   </section>
 
+  <section id="contact-setup">
+    <div class="wrap grid-2">
+      <div>
+        <div class="kicker">Email and pilot setup</div>
+        <h2>Simple contact layers now. Full SaaS onboarding later.</h2>
+        <p class="lead">This static version supports professional email CTAs for pilot requests, demo scheduling, API discussions, white-paper requests, and pilot portal access. True account creation, password login, user dashboards, and billing should be added later through a SaaS stack.</p>
+      </div>
+      <div style="display:grid;gap:12px">
+        <a class="output-row" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Request"><div class="output-dot"></div><div><strong>Request pilot</strong><span>Email pathway for institutional pilot discussions.</span></div></a>
+        <a class="output-row" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Demo%20Request"><div class="output-dot"></div><div><strong>Book demo</strong><span>Email pathway for a QNX v4.2 demo conversation.</span></div></a>
+        <a class="output-row" href="mailto:info@quantisnexis.com?subject=QuantisNexis%20Pilot%20Portal%20Access"><div class="output-dot"></div><div><strong>Request portal access</strong><span>Placeholder path for future login/client dashboard onboarding.</span></div></a>
+      </div>
+    </div>
+  </section>
+
   <section id="pilot">
     <div class="wrap">
       <div class="cta">
@@ -650,7 +750,7 @@
     <div class="footer-grid">
       <div><h4>QuantisNexis™ / QNX™</h4><p>Organizational decision intelligence for resilient institutions. Built by Onyx Moorland Environmental Engineering.</p></div>
       <div><h4>Platform</h4><p>QNX Core™<br/>QuantisSentra™<br/>Quantis Advisors™<br/>Quantis Narrator™</p></div>
-      <div><h4>Contact</h4><p><a href="mailto:info@quantisnexis.com">info@quantisnexis.com</a><br/>quantisnexis.com</p></div>
+      <div><h4>Contact</h4><p><a href="mailto:info@quantisnexis.com">info@quantisnexis.com</a><br/><a href="#portal">Pilot portal</a><br/>quantisnexis.com</p></div>
     </div>
     <div class="fine">© 2026 Onyx Moorland Environmental Engineering. QuantisNexis™, QNX™, QuantisSentra™, Quantis Advisors™, Quantis Narrator™, and Quantis Index™ are platform marks of Onyx Moorland Environmental Engineering. All rights reserved.</div>
   </div>
