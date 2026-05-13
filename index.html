@@ -1,21 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMQL93EE8M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BMQL93EE8M');
-</script>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>QuantisNexis™ | QNX v4.2 Pilot-Ready Decision Intelligence Engine</title>
+  <title>QuantisNexis™ | QNX v4.2 Decision Intelligence Platform</title>
   <meta name="description" content="QuantisNexis/QNX is a pilot-ready decision-intelligence platform that transforms organizational, governance, resilience, and performance data into defensible Quantis Index scores, QuantisSentra risk signals, and prioritized actions."/>
   <meta property="og:title" content="QuantisNexis™ | QNX Decision Intelligence Platform"/>
-  <meta property="og:description" content="Pilot-ready QNX v4.2 engine for organizational intelligence, resilience diagnostics, risk/decay signals, executive decision support, and NYC urban flood governance demo."/>
+  <meta property="og:description" content="QNX v4.2 decision intelligence platform for organizational, resilience diagnostics, risk/decay signals, executive decision support, and NYC urban flood governance demo."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://quantisnexis.com"/>
   <meta name="theme-color" content="#07111f"/>
@@ -208,7 +199,7 @@
     }
     .arch-row.core{border-color:rgba(20,184,166,.35);background:rgba(20,184,166,.08)}
     .arch-name{font-weight:800;color:white;font-size:14px}.arch-desc{color:#aebfd5;font-size:13px}.arch-status{text-align:right;font-size:12px;font-weight:850;border-radius:999px;padding:6px 9px;border:1px solid var(--line2)}
-    .live{color:#7df7df;background:rgba(20,184,166,.08)}.pilot{color:#93c5fd;background:rgba(59,130,246,.08)}.ready{color:#facc15;background:rgba(245,158,11,.08)}
+    .live{color:#7df7df;background:rgba(20,184,166,.08)}.pilot{color:#93c5fd;background:rgba(59,130,246,.08)}.ready{color:#facc15;background:rgba(245,158,11,.08)}.planned{color:#94a3b8;background:rgba(148,163,184,.08)}
 
     .modules{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
     .module{text-align:center;padding:24px 14px}.module .abbr{font-size:11px;color:var(--muted);font-weight:850;letter-spacing:.10em}.module h3{margin:10px 0 6px}.module p{font-size:12px}
@@ -803,17 +794,18 @@
       </div>
 
       <div class="architecture">
-        <div class="arch-row"><div class="arch-name">01 · Client input</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Input sources and assessment channels</summary><p>Likert, EFQM A/B/C/D, Diamond multi-rater, RADAR inputs, cohort/history records, documents, KPIs.</p></details></div><div class="arch-status pilot">Pilot</div></div>
-        <div class="arch-row"><div class="arch-name">02 · Validation</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Quality and structure checks</summary><p>Base-result validation, numeric checks, fallback warning, and output contract checks.</p></details></div><div class="arch-status live">Live</div></div>
-        <div class="arch-row core"><div class="arch-name">03 · QNX Core™ Engine</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Core mathematical engine</summary><p>25-variable QNX Core engine integrating BMS, ATCG, VUCA, WOWA/Orness weighting, and the master equation to generate the Quantis Index™ before advanced diagnostic layers are applied.</p></details></div><div class="arch-status live">Core</div></div>
-        <div class="arch-row"><div class="arch-name">04 · RADAR scoring</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Approach × deployment scoring</summary><p>Approach × deployment scoring with RADAR-to-variable mapping.</p></details></div><div class="arch-status live">Live</div></div>
-        <div class="arch-row"><div class="arch-name">05 · Benchmarking</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Maturity and award-readiness bands</summary><p>EFQM/Baldrige equivalent bands, award-readiness signals, and client-facing maturity language.</p></details></div><div class="arch-status live">Live</div></div>
-        <div class="arch-row"><div class="arch-name">06 · Synergy + copula</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Interaction and tail-risk diagnostics</summary><p>Diamond ESI proxy, copula-style dependency diagnostics, joint low-tail risk, and variance guard.</p></details></div><div class="arch-status live">Live</div></div>
-        <div class="arch-row"><div class="arch-name">07 · QuantisSentra™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Risk and decay signal layer</summary><p>Decay, stagnation, critical thresholds, anomaly signals, and trend-aware risk detection.</p></details></div><div class="arch-status pilot">Pilot</div></div>
-        <div class="arch-row"><div class="arch-name">08 · ML layer</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Learning, feature, and trend support</summary><p>Feature store, outcome-label workflow, readiness scoring, clustering, anomaly detection, and time-series utilities. Supervised ML activates after pilot data.</p></details></div><div class="arch-status ready">Data-gated</div></div>
-        <div class="arch-row"><div class="arch-name">09 · Quantis Advisors™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Priority actions and treatment logic</summary><p>Sector-specific Tito-Conti diagnosis, treatment actions, and review cycle.</p></details></div><div class="arch-status live">Live</div></div>
-        <div class="arch-row"><div class="arch-name">10 · Quantis Narrator™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Executive explanation layer</summary><p>Template report blocks and optional LLM hook with no-score-invention guardrail.</p></details></div><div class="arch-status pilot">Pilot</div></div>
-        <div class="arch-row"><div class="arch-name">11 · Output + API</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Reports, dashboard, and integration outputs</summary><p>Dashboard JSON, report templates, API-ready output, and future branded PDF/HTML reports.</p></details></div><div class="arch-status pilot">Next</div></div>
+        <div class="arch-row"><div class="arch-name">01 · Client input</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Input sources and assessment channels</summary><p>Likert, EFQM A/B/C/D, Diamond multi-rater, RADAR inputs, cohort/history records, documents, KPIs.</p></details></div><div class="arch-status pilot">Beta</div></div>
+        <div class="arch-row"><div class="arch-name">02 · Validation</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Quality and structure checks</summary><p>Base-result validation, numeric checks, fallback warning, and output contract checks.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row core"><div class="arch-name">03 · QNX Core™ Engine</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Core mathematical engine</summary><p>25-variable QNX Core engine integrating BMS, ATCG, VUCA, WOWA/Orness weighting, and the master equation to generate the Quantis Index™ before advanced diagnostic layers are applied.</p></details></div><div class="arch-status live">Core Engine</div></div>
+        <div class="arch-row"><div class="arch-name">04 · RADAR scoring</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Approach × deployment scoring</summary><p>Approach × deployment scoring with RADAR-to-variable mapping.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">05 · Benchmarking</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Maturity and award-readiness bands</summary><p>EFQM/Baldrige equivalent bands, award-readiness signals, and client-facing maturity language.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">06 · Synergy + copula</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Interaction and tail-risk diagnostics</summary><p>Diamond ESI proxy, copula-style dependency diagnostics, joint low-tail risk, and variance guard.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">07 · QuantisSentra™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Risk and decay signal layer</summary><p>Sector-calibrated decay thresholds, probabilistic alert signals (P_AMBER, P_RED, P_CRITICAL), critical pillar classification, and trend-aware decay detection. Upgraded to probabilistic mode in v4.2.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">07b · Uncertainty engine</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Monte Carlo, scenario stress, and probabilistic risk</summary><p>Three stochastic mechanisms: (A) Monte Carlo CI bands with seeded reproducibility, (B) four-scenario stress trajectory (Baseline / Optimistic / Stress / Shock), and (C) probabilistic QuantisSentra decay alerts. Produces a plain-language uncertainty summary for Narrator. New in v4.2.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">08 · ML layer</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Learning, feature, and trend support</summary><p>Feature store (JSONL), outcome-label workflow for supervised ML activation, ML readiness staging, time-series analytics (linear trend, exponential smoothing, next-period forecast), and rule-based fallbacks. Supervised models activate after 250+ labeled records from pilot deployments.</p></details></div><div class="arch-status ready">Data-gated</div></div>
+        <div class="arch-row"><div class="arch-name">09 · Quantis Advisors™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Priority actions and treatment logic</summary><p>Sector-specific Tito-Conti diagnosis, treatment actions, and review cycle.</p></details></div><div class="arch-status live">Active</div></div>
+        <div class="arch-row"><div class="arch-name">10 · Quantis Narrator™</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Executive explanation layer</summary><p>Template report blocks with uncertainty summary wired in (v4.2). Optional live LLM explanation via QNX_NARRATOR_API_KEY with no-score-invention guardrail. Connect provider to activate full narrative output.</p></details></div><div class="arch-status pilot">Beta</div></div>
+        <div class="arch-row"><div class="arch-name">11 · Output + API</div><div class="arch-desc"><details class="arch-details"><summary class="arch-summary">Reports, dashboard, and integration outputs</summary><p>Six dashboard chart specs (radar spider, synergy heatmap, benchmark panel, multi-rater delta, uncertainty band, scenario trajectory). API-ready JSON output. Full REST API deployment and branded PDF reports are the next milestone.</p></details></div><div class="arch-status planned">Planned</div></div>
       </div>
     </div>
   </section>
