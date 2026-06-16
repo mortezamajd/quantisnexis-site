@@ -1384,6 +1384,39 @@
       }
     }
 
+
+    /* ── All table scroll wrappers ── */
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 14px;
+      /* subtle scroll shadow hint on right edge */
+      background:
+        linear-gradient(to right, transparent 90%, rgba(0,0,0,.15)) right,
+        linear-gradient(to right, rgba(0,0,0,.08), transparent) left;
+      background-repeat: no-repeat;
+      background-size: 40px 100%, 10px 100%;
+      background-attachment: local, scroll;
+    }
+    .table-scroll table {
+      white-space: nowrap;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    /* scroll hint label on mobile */
+    @media (max-width: 640px) {
+      .table-scroll::before {
+        content: 'scroll 92';
+        display: block;
+        text-align: right;
+        font-size: 10px;
+        color: rgba(255,255,255,.30);
+        padding: 0 4px 4px;
+        font-style: italic;
+        letter-spacing: .04em;
+      }
+    }
+
   </style>
 </head>
 
@@ -1686,7 +1719,8 @@
 
           <div class="card" style="box-shadow:none">
             <h3>Tito-Conti priority areas</h3>
-            <table class="demo-table">
+            <div class="table-scroll" style="margin-top:4px">
+            <table class="demo-table" style="min-width:420px">
               <thead><tr><th>Rank</th><th>Pillar</th><th>Actual</th><th>Target</th><th>Status</th><th>Priority</th></tr></thead>
               <tbody>
                 <tr><td>1</td><td>RE</td><td>0.54</td><td>0.82</td><td>WARNING</td><td>0.58</td></tr>
@@ -2139,7 +2173,7 @@
     <section class="kpis"><div class="card kpi"><div class="label">Peak 1H rainfall</div><div class="value" id="peak"></div><div class="note">MRMS RadarOnly_QPE_01H sample</div></div><div class="card kpi"><div class="label">Event accumulation</div><div class="value" id="accum"></div><div class="note">Citywide average · sample</div></div><div class="card kpi"><div class="label">311 reports filtered</div><div class="value" id="reports"></div><div class="note">Across selected boroughs/categories</div></div><div class="card kpi"><div class="label">Hardest-hit borough</div><div class="value" id="hardest"></div><div class="note" id="hardestNote"></div></div></section>
     <section class="card filters" id="filters"></section>
     <main class="grid"><section class="card pad mapbox"><h2 class="panel-title">Spatial coincidence - rainfall mosaic × 311 reports</h2><svg class="map-svg" id="map" viewBox="0 0 760 430" role="img" aria-label="NYC rainfall and 311 request heatmap"></svg><div class="legend"><span>Rainfall</span><span class="grad"></span><span id="rainScale"></span><span>311 dots: Flooding / Sewer / Street</span></div></section><section class="card pad chartbox"><h2 class="panel-title">Rainfall intensity × daily 311 reports <span class="badge" id="corr"></span></h2><svg id="scatter" viewBox="-20 0 600 445" role="img" aria-label="Scatter plot of rainfall intensity and reports"></svg><p class="desc">Each point is one borough on one storm event. Correlation recalculates with current filters.</p></section></main>
-    <section class="card pad table"><h2 class="panel-title" id="tableTitle"></h2><table><thead><tr><th>Borough</th><th>Peak in/hr</th><th>Reports</th><th>Flooding</th><th>Sewer</th><th>Street</th></tr></thead><tbody id="tbody"></tbody></table></section>
+    <section class="card pad table"><h2 class="panel-title" id="tableTitle"></h2><div class="table-scroll"><table style="min-width:480px"><thead><tr><th>Borough</th><th>Peak in/hr</th><th>Reports</th><th>Flooding</th><th>Sewer</th><th>Street</th></tr></thead><tbody id="tbody"></tbody></table></section>
     <section class="card pad zip-section" id="zipSensitivity">
       <div class="zip-head">
         <div>
@@ -2163,7 +2197,7 @@
         </div>
         <div>
           <h3 class="panel-title">Ranking table</h3>
-          <div class="zip-table-wrap"><table><thead><tr><th>Rank</th><th>ZIP</th><th>Borough</th><th>Score</th><th>Complaints</th><th>Trigger mm</th><th>Peak 24h mm</th></tr></thead><tbody id="zipTableBody"></tbody></table></div>
+          <div class="zip-table-wrap"><div class="table-scroll"><table style="min-width:500px"><thead><tr><th>Rank</th><th>ZIP</th><th>Borough</th><th>Score</th><th>Complaints</th><th>Trigger mm</th><th>Peak 24h mm</th></tr></thead><tbody id="zipTableBody"></tbody></table></div></div>
         </div>
       </div>
       <div class="zip-grid event-days">
@@ -2178,7 +2212,7 @@
         </div>
         <div>
           <h3 class="panel-title">Largest MRMS event days in the ZIP analysis window</h3>
-          <div class="zip-table-wrap"><table><thead><tr><th>Rain date</th><th>Max 24h mm</th><th>Mean 24h mm</th><th>311 response date</th><th>Complaints</th></tr></thead><tbody>
+          <div class="zip-table-wrap"><div class="table-scroll"><table style="min-width:520px"><thead><tr><th>Rain date</th><th>Max 24h mm</th><th>Mean 24h mm</th><th>311 response date</th><th>Complaints</th></tr></thead><tbody>
             <tr><td>2024-08-07</td><td class="num">167.0</td><td class="num">55.7</td><td>2024-08-08</td><td class="num">85</td></tr>
             <tr><td>2025-07-15</td><td class="num">131.9</td><td class="num">40.0</td><td>2025-07-16</td><td class="num">66</td></tr>
             <tr><td>2025-08-01</td><td class="num">97.2</td><td class="num">23.0</td><td>2025-08-02</td><td class="num">76</td></tr>
@@ -2189,7 +2223,7 @@
             <tr><td>2026-03-06</td><td class="num">71.3</td><td class="num">35.6</td><td>2026-03-07</td><td class="num">46</td></tr>
             <tr><td>2025-09-07</td><td class="num">68.0</td><td class="num">30.3</td><td>2025-09-08</td><td class="num">67</td></tr>
             <tr><td>2025-05-15</td><td class="num">62.0</td><td class="num">19.3</td><td>2025-05-16</td><td class="num">69</td></tr>
-          </tbody></table></div>
+          </tbody></table></div></div>
         </div>
       </div>
     </section>
